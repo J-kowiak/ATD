@@ -20,7 +20,7 @@ namespace Testing4
         [TestMethod]
         public void AdminOK()
         {
-            clsStaff staff = new clsStaff();
+            var staff = new clsStaff();
 
             Boolean testData = true;
 
@@ -32,7 +32,7 @@ namespace Testing4
         [TestMethod]
         public void DateOfCreationOK()
         {
-            clsStaff staff = new clsStaff();
+            var staff = new clsStaff();
 
             DateTime testData = DateTime.Now.Date;
 
@@ -44,7 +44,7 @@ namespace Testing4
         [TestMethod]
         public void AddressOK()
         {
-            clsStaff staff = new clsStaff();
+            var staff = new clsStaff();
 
             string testData = "112 Test Street";
 
@@ -56,7 +56,7 @@ namespace Testing4
         [TestMethod]
         public void IDOK()
         {
-            clsStaff staff = new clsStaff();
+            var staff = new clsStaff();
 
             Int32 testData = 1;
        
@@ -68,7 +68,7 @@ namespace Testing4
         [TestMethod]
         public void NameOK()
         {
-            clsStaff staff = new clsStaff();
+            var staff = new clsStaff();
 
             string testData = "John Doe";
 
@@ -80,7 +80,7 @@ namespace Testing4
         [TestMethod]
         public void PasswordOK()
         {
-            clsStaff staff = new clsStaff();
+            var staff = new clsStaff();
 
             string testData = "test123";
 
@@ -92,13 +92,207 @@ namespace Testing4
         [TestMethod]
         public void UsernameOK()
         {
-            clsStaff staff = new clsStaff();
+            var staff = new clsStaff();
 
             string testData = "johndoe1@gmail.com";
 
             staff.Username = testData;
 
             Assert.AreEqual(staff.Username, testData);
+        }
+
+        [TestMethod]
+        public void AgeOK()
+        {
+            var staff = new clsStaff();
+
+            int testData = 30;
+
+            staff.Age = testData;
+
+            Assert.AreEqual(staff.Age, testData);
+        }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            var staff = new clsStaff();
+
+            Boolean found = false;
+
+            Int32 staffID = 2;
+
+            found = staff.Find(staffID);
+
+            Assert.IsTrue(found);
+        }
+
+        [TestMethod]
+        public void TestStaffIDFound()
+        {
+            var staff = new clsStaff();
+
+            Boolean found = false;
+
+            Boolean OK = true;
+
+            Int32 staffID = 2;
+
+            found = staff.Find(staffID);
+
+            if (staff.ID != 2)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAdminFound()
+        {
+            var staff = new clsStaff();
+
+            Boolean found = false;
+
+            Boolean OK = true;
+
+            Int32 staffID = 2;
+
+            found = staff.Find(staffID);
+
+            if(staff.Admin != false)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDateOfCreationFound()
+        {
+            var staff = new clsStaff();
+
+            Boolean found = false;
+
+            Boolean OK = true;
+
+            Int32 staffID = 2;
+
+            found = staff.Find(staffID);
+
+            if(staff.DateOfCreation != Convert.ToDateTime("05/02/2021"))
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffAddressFound()
+        {
+            var staff = new clsStaff();
+
+            Boolean found = false;
+
+            Boolean OK = true;
+
+            Int32 staffID = 2;
+
+            found = staff.Find(staffID);
+
+            if (staff.Address != "123 Test Street")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffNameFound()
+        {
+            var staff = new clsStaff();
+
+            Boolean found = false;
+
+            Boolean OK = true;
+
+            Int32 staffID = 2;
+
+            found = staff.Find(staffID);
+
+            if (staff.Name != "Jane Doe")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffPasswordFound()
+        {
+            var staff = new clsStaff();
+
+            Boolean found = false;
+
+            Boolean OK = true;
+
+            Int32 staffID = 2;
+
+            found = staff.Find(staffID);
+
+            if (staff.Password != "test321")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffUsernameFound()
+        {
+            var staff = new clsStaff();
+
+            Boolean found = false;
+
+            Boolean OK = true;
+
+            Int32 staffID = 2;
+
+            found = staff.Find(staffID);
+
+            if (staff.Username != "JaneDoe@gmail.com")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffAgeFound()
+        {
+            var staff = new clsStaff();
+
+            Boolean found = false;
+
+            Boolean OK = true;
+
+            Int32 staffID = 2;
+
+            found = staff.Find(staffID);
+
+            if (staff.Age != 30)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
         }
     }
 }

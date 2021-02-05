@@ -20,6 +20,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write("Staff Name: " + staff.Name + "<br>");
         Response.Write("Staff Address: " + staff.Address + "<br>");
         Response.Write("Date of Creation: " + staff.DateOfCreation + "<br>");
+        Response.Write("Staff Age: " + staff.Age + "<br>");
         Response.Write("Is Admin: " + staff.Admin);
     }
 }
