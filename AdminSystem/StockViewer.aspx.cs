@@ -16,5 +16,10 @@ public partial class _1Viewer : System.Web.UI.Page
         stock = (clsStock)Session["stock"];
         // displays category on page
         Response.Write(stock.Category);
+        Response.Write(stock.Name);
+        Response.Write(stock.NextDelivery);
+        Response.Write(stock.ProductId);
+        Response.Write(stock.Sale_Ready);
+        Response.Write(stock.Quantity);
     }
 }

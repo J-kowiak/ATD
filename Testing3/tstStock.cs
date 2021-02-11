@@ -8,6 +8,7 @@ namespace Testing3
     public class tstStock
     {
         clsStock stock = new clsStock();
+        
         [TestMethod]
         public void InstanceOK()
         {
