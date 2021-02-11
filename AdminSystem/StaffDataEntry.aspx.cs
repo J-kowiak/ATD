@@ -10,7 +10,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!(bool)Session["isLoggedIn"] || Session["isLoggedIn"] == null)
+        {   
+            Response.Redirect("StaffLogin.aspx");
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -50,11 +53,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             staffID = -1; // Set a default value that would not exist.
         }
-     
+        
         found = staff.Find(staffID);
 
         // If the staff ID exists...
-        if(found)
+        if (found)
         {
             txtStaffUsername.Text = staff.Username;
             txtStaffPassword.Text = staff.Password;
@@ -68,5 +71,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             lblError.Text = "<b>ERROR - THIS RECORD DOES NOT EXIST!</b>";
         }
+    }
+
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Session["staffUsername"] = null;
+        Session["staffPassword"] = null;
+        Session["isAdmin"] = false;
+        Session["isLoggedIn"] = false;
+
+        Response.Redirect("StaffLogin.aspx");
     }
 }

@@ -10,6 +10,11 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if(!(bool)Session["isLoggedIn"] || Session["isLoggedIn"] == null)
+        {
+            Response.Redirect("StaffLogin.aspx");
+        }
+
         clsStaff staff = new clsStaff();
 
         staff = (clsStaff)Session["staff"];
@@ -22,5 +27,10 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write("Date of Creation: " + staff.DateOfCreation + "<br>");
         Response.Write("Staff Age: " + staff.Age + "<br>");
         Response.Write("Is Admin: " + staff.Admin);
+    }
+
+    protected void btnBack_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StaffDataEntry.aspx");
     }
 }
