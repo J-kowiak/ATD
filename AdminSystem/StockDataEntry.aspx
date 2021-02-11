@@ -17,7 +17,7 @@
 &nbsp;<asp:TextBox ID="txtName" runat="server"></asp:TextBox>
         </p>
 &nbsp;<asp:Label ID="lblCategory" runat="server" Text="Category" width="86px"></asp:Label>
-&nbsp;<asp:TextBox ID="txtCategory" runat="server"></asp:TextBox>
+&nbsp;<asp:TextBox ID="txtCategory" runat="server" OnTextChanged="txtCategory_TextChanged">213</asp:TextBox>
         <p>
             <asp:Label ID="lblQuantity" runat="server" Text="Quantity" width="86px"></asp:Label>
 &nbsp;<asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>

@@ -22,11 +22,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //Creates a new instance of stock
         clsStock stock = new clsStock();
-        // Captures the category 
+        // Captures the attribute 
         stock.Category = txtCategory.Text;
-        // Stores category in session objecy
+        stock.Name = txtName.Text;
+        stock.Quantity = Convert.ToInt32(txtQuantity.Text);
+        stock.ProductId = Convert.ToInt32(txtProductId.Text);
+        stock.NextDelivery = Convert.ToDateTime(txtNextDelivery.Text);
+        stock.Sale_Ready = Convert.ToBoolean(txtNextDelivery.Text);
+        // Stores attributes in session objecy
         Session["stock"] = stock;
         // Navigates to viewer page
-        Response.Redirect("StockViewer");
+        Response.Redirect("StockViewer.aspx");
+    }
+
+    protected void txtCategory_TextChanged(object sender, EventArgs e)
+    {
+
     }
 }
