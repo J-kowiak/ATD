@@ -161,7 +161,7 @@ namespace Testing4
 
             found = staff.Find(staffID);
 
-            if(staff.Admin != false)
+            if(staff.Admin)
             {
                 OK = false;
             }
@@ -207,6 +207,8 @@ namespace Testing4
             {
                 OK = false;
             }
+
+            Console.WriteLine(staff.Address);
 
             Assert.IsTrue(OK);
         }

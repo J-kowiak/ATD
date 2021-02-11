@@ -9,6 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Button ID="btnBack" runat="server" style="z-index: 1; left: 10px; top: 162px; position: absolute; width: 60px" Text="Back" OnClick="btnBack_Click" />
         </div>
     </form>
 </body>
