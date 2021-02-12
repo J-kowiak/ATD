@@ -76,6 +76,126 @@ namespace Testing3
             // Tests to see if the value is the same
             Assert.AreEqual(stock.ProductId, data);
         }
-
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            // creates some data
+            Boolean found = false;
+            // creates another variable
+            Int32 id = 2;
+            // Invokes a method
+            found = stock.Find(id);
+            Assert.IsTrue(found);
+        }
+        [TestMethod]
+        public void TestProductIdFound()
+        {
+            // Stores the result of the search
+            Boolean found = false;
+            // record if data is ok 
+            Boolean OK = true;
+            // creates another variable
+            Int32 id = 2;
+            // Invokes a method
+            found = stock.Find(id);
+            //checks productId
+            if (stock.ProductId != 2)
+            {
+                OK = false;
+            }
+            // tests to see if result is ok
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestNameFound()
+        {
+            // Stores the result of the search
+            Boolean found = false;
+            // record if data is ok 
+            Boolean OK = true;
+            // creates another variable
+            Int32 id = 2;
+            // Invokes a method
+            found = stock.Find(id);
+            //checks productId
+            if (stock.Name != "fred")
+            {
+                OK = false;
+            }
+            // tests to see if result is ok
+            Assert.IsTrue(OK);
+        }
+        public void TestCategoryFound()
+        {
+            // Stores the result of the search
+            Boolean found = false;
+            // record if data is ok 
+            Boolean OK = true;
+            // creates another variable
+            Int32 id = 2;
+            // Invokes a method
+            found = stock.Find(id);
+            //checks productId
+            if (stock.Category != "Jumper")
+            {
+                OK = false;
+            }
+            // tests to see if result is ok
+            Assert.IsTrue(OK);
+        }
+        public void TestQuantityFound()
+        {
+            // Stores the result of the search
+            Boolean found = false;
+            // record if data is ok 
+            Boolean OK = true;
+            // creates another variable
+            Int32 id = 2;
+            // Invokes a method
+            found = stock.Find(id);
+            //checks productId
+            if (stock.Quantity != 5)
+            {
+                OK = false;
+            }
+            // tests to see if result is ok
+            Assert.IsTrue(OK);
+        }
+        public void TestNextDeliveryFound()
+        {
+            // Stores the result of the search
+            Boolean found = false;
+            // record if data is ok 
+            Boolean OK = true;
+            // creates another variable
+            Int32 id = 2;
+            // Invokes a method
+            found = stock.Find(id);
+            //checks productId
+            if (stock.NextDelivery != Convert.ToDateTime("16/09/2020"))
+            {
+                OK = false;
+            }
+            // tests to see if result is ok
+            Assert.IsTrue(OK);
+        }
+        public void TestSale_ReadyFound()
+        {
+            // Stores the result of the search
+            Boolean found = false;
+            // record if data is ok 
+            Boolean OK = true;
+            // creates another variable
+            Int32 id = 2;
+            // Invokes a method
+            found = stock.Find(id);
+            //checks productId
+            if (stock.Sale_Ready != true)
+            {
+                OK = false;
+            }
+            // tests to see if result is ok
+            Assert.IsTrue(OK);
+        }
     }
 }
