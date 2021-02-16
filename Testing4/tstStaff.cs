@@ -247,7 +247,7 @@ namespace Testing4
 
             found = staff.Find(staffID);
 
-            if (staff.Password != "test321")
+            if (staff.Password != "52cdd6dc7f26c0aafb3005e4d2106852cb7ba56fc4bd493dcd7116ae11a7c5f1")
             {
                 OK = false;
             }
@@ -268,7 +268,7 @@ namespace Testing4
 
             found = staff.Find(staffID);
 
-            if (staff.Username != "JaneDoe@gmail.com")
+            if (staff.Username != "janedoe@gmail.com")
             {
                 OK = false;
             }

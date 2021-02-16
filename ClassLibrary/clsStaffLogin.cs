@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace ClassLibrary
 {
@@ -70,7 +71,7 @@ namespace ClassLibrary
             var db = new clsDataConnection();
 
             db.AddParameter("@staffUsername", staffUsername);
-            db.AddParameter("@staffPassword", staffPassword);
+            db.AddParameter("@staffPassword", HashPassword(staffUsername, staffPassword));
 
             db.Execute("sproc_tblStaffLogin_CheckIfCorrectDetails");
 
@@ -88,6 +89,27 @@ namespace ClassLibrary
             else
             {
                 return false;
+            }
+        }
+
+        private string HashPassword(string staffUsername, string staffPassword)
+        {
+            // Staff Username acts as a salt.
+            string password = staffUsername + staffPassword;
+
+            using (SHA256 hash = SHA256.Create()) // Use SHA256 hashing algorithm.
+            {
+                // Hashes the password.
+                byte[] passwordBytes = hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+                string hashedPassword = "";
+
+                for (int i = 0; i < passwordBytes.Length; i++)
+                {
+                    hashedPassword += passwordBytes[i].ToString("x2"); // Formats each byte.
+                }
+
+                return hashedPassword;
             }
         }
     }
