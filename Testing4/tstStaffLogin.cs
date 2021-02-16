@@ -4,9 +4,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Testing4
 {
-    /// <summary>
-    /// Summary description for tstStaffLogin
-    /// </summary>
     [TestClass]
     public class tstStaffLogin
     {
@@ -75,7 +72,7 @@ namespace Testing4
 
             Boolean found = false;
 
-            string staffUsername = "JohnDoe@gmail.com";
+            string staffUsername = "johndoe@gmail.com";
             string staffPassword = "test123";
 
             found = staffLogin.Find(staffUsername, staffPassword);
@@ -92,12 +89,34 @@ namespace Testing4
 
             Boolean OK = true;
 
-            string staffUsername = "JohnDoe@gmail.com";
+            string staffUsername = "johndoe@gmail.com";
             string staffPassword = "test123";
 
             found = staffLogin.Find(staffUsername, staffPassword);
 
-            if(staffLogin.Username != "JohnDoe@gmail.com")
+            if(staffLogin.Username != "johndoe@gmail.com")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestStaffPasswordFound()
+        {
+            var staffLogin = new clsStaffLogin();
+
+            Boolean found = false;
+
+            Boolean OK = true;
+
+            string staffUsername = "johndoe@gmail.com";
+            string staffPassword = "test123";
+
+            found = staffLogin.Find(staffUsername, staffPassword);
+
+            if (staffLogin.Password != "a41949ce331e10f588d406296f955ddbc3b54237b42e720a9e1d6b412d580741")
             {
                 OK = false;
             }
@@ -114,7 +133,7 @@ namespace Testing4
 
             Boolean OK = true;
 
-            string staffUsername = "JohnDoe@gmail.com";
+            string staffUsername = "johndoe@gmail.com";
             string staffPassword = "test123";
 
             found = staffLogin.Find(staffUsername, staffPassword);
@@ -136,7 +155,7 @@ namespace Testing4
 
             Boolean OK = true;
 
-            string staffUsername = "JohnDoe@gmail.com";
+            string staffUsername = "johndoe@gmail.com";
             string staffPassword = "test123";
 
             found = staffLogin.Find(staffUsername, staffPassword);

@@ -18,7 +18,7 @@ public partial class StaffLogin : System.Web.UI.Page
         var staffDetails = new clsStaffLogin();
         // Is the user an admin?
 
-        if (staffDetails.Find(txtStaffUsername.Text, txtStaffPassword.Text))
+        if (staffDetails.Find(txtStaffUsername.Text.ToLower(), txtStaffPassword.Text.ToLower()))
         {
             // Now set session.
             Session["staffUsername"] = staffDetails.Username;

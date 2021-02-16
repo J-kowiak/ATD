@@ -10,9 +10,16 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!(bool)Session["isLoggedIn"] || Session["isLoggedIn"] == null)
+        if (Session["isLoggedIn"] == null)
         {
             Response.Redirect("StaffLogin.aspx");
+        }
+        else
+        {
+            if (!(bool)Session["isLoggedIn"] || Session["isLoggedIn"] == null)
+            {
+                Response.Redirect("StaffLogin.aspx");
+            }
         }
 
         clsStaff staff = new clsStaff();
