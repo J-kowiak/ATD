@@ -25,9 +25,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+        //create new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
+        //capture the OrderID
         AnOrder.OrderID = Convert.ToInt32(txtOrderID.Text);
+        //store the ID in session object
         Session["AnOrder"] = AnOrder;
+        //navigate to viewer page
         Response.Redirect("OrderViewer.aspx");
     }
 
