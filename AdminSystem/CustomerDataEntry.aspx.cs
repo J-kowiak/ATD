@@ -22,12 +22,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
-        ACustomer.CustomerNo = txtName.Text;
+        ACustomer.CustomerNo = Convert.ToInt32(txtName.Text);
         //capture the customer no
         ACustomer.Name = txtName.Text;
         ACustomer.Email = txtEmail.Text;
         ACustomer.Password = txtPassword.Text;
-        ACustomer.DateOfBirth = txtDateOfBirth.Text;
+        ACustomer.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
         ACustomer.Address = txtAddress.Text;
         //store the customer in the session object
         Session["ACustomer"] = ACustomer;
