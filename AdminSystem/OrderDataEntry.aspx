@@ -10,6 +10,30 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:Label ID="OrderId" runat="server" height="16px" Text="Order ID"></asp:Label>
+&nbsp;<asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Label ID="ItemName" runat="server" height="16px" Text="Item Name" width="58px"></asp:Label>
+        <asp:TextBox ID="txtItemName" runat="server" height="16px" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Label ID="Price" runat="server" height="16px" Text="Price" width="58px"></asp:Label>
+&nbsp;<asp:TextBox ID="txtPrice" runat="server" height="16px"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Label ID="DateOrderMade" runat="server" Text="Date Order Made" width="58px"></asp:Label>
+&nbsp;<asp:TextBox ID="txtDateOrderMade" runat="server" height="16px"></asp:TextBox>
+        <br />
+        <br />
+        <asp:CheckBox ID="ItemShipped" runat="server" OnCheckedChanged="ItemShipped_CheckedChanged" Text="Item Shipped?" />
+        <br />
+        <br />
+        <asp:Label ID="lblError" runat="server"></asp:Label>
+        <br />
+        <br />
+        <asp:Button ID="btnOK" runat="server" Text="OK" />
+        <asp:Button ID="Button1" runat="server" Text="Button" />
     </form>
 </body>
 </html>
