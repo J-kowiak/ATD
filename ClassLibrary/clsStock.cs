@@ -81,16 +81,33 @@ namespace ClassLibrary
 
         public bool Find(int id)
         {
-            // hard coded for test
-            mSale_Ready = true;
-            mQuantity = 50;
-            mName = "Navy Cotton Jumper";
-            mCategory = "Jumper";
-            mNextDelivery = Convert.ToDateTime("16/09/2020");
-            mProductId = 21;
 
-            return true;
-            //throw new NotImplementedException();
+            //create instance of data connection
+            clsDataConnection DB = new clsDataConnection();
+            // add parameter for product id to search
+            DB.AddParameter("@ProductId", ProductId);
+            // exec stored procedure
+            DB.Execute("sproc_tblStock_FilterByProductId");
+            // if found should be 1 or 0
+            if (DB.Count == 1)
+            {
+                mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductId"]);
+                mCategory = Convert.ToString(DB.DataTable.Rows[0]["Category"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mNextDelivery = Convert.ToDateTime(DB.DataTable.Rows[0]["NextDelivery"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
+                mSale_Ready = Convert.ToBoolean(DB.DataTable.Rows[0]["SaleReady"]);
+                // returns everything that worked
+                return true;
+            }
+            //if no record foubd
+            else
+            {
+                // indicate a problem
+                return false;
+            }
+
+
         }
     }
 }
