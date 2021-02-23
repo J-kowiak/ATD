@@ -118,7 +118,7 @@ namespace Testing3
             // Invokes a method
             found = stock.Find(id);
             //checks productId
-            if (stock.Name != "fred")
+            if (stock.Name != "Navy Cotton Jumper")
             {
                 OK = false;
             }

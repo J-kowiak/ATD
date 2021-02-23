@@ -84,7 +84,7 @@ namespace ClassLibrary
             // hard coded for test
             mSale_Ready = true;
             mQuantity = 5;
-            mName = "fred";
+            mName = "Navy Cotton Jumper";
             mCategory = "Jumper";
             mNextDelivery = Convert.ToDateTime("16/09/2020");
             mProductId = 21;
