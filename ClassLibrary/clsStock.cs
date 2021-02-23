@@ -83,7 +83,7 @@ namespace ClassLibrary
         {
             // hard coded for test
             mSale_Ready = true;
-            mQuantity = 5;
+            mQuantity = 50;
             mName = "Navy Cotton Jumper";
             mCategory = "Jumper";
             mNextDelivery = Convert.ToDateTime("16/09/2020");
