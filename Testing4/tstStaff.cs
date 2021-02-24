@@ -7,6 +7,13 @@ namespace Testing4
     [TestClass]
     public class tstStaff
     {
+        private string dateOfCreation = DateTime.Now.Date.ToString();
+        private string staffAddress = "112 Test Street"; 
+        private string staffName = "John Doe"; 
+        private string staffPassword = "test123"; 
+        private string staffUsername = "JohnDoe@gmail.com"; 
+        private int staffAge = 32;
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -295,6 +302,589 @@ namespace Testing4
             }
 
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            var staff = new clsStaff();
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void DateOfCreationExtremeMin()
+        {
+            var staff = new clsStaff();
+
+            DateTime testDate = DateTime.Now.Date.AddYears(-100);
+
+            string dateOfCreation = testDate.ToString();
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void DateOfCreationMinLessOne()
+        {
+            var staff = new clsStaff();
+
+            DateTime testDate = DateTime.Now.Date.AddDays(-1);
+
+            string dateOfCreation = testDate.ToString();
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void DateOfCreationMin()
+        {
+            var staff = new clsStaff();
+
+            DateTime testDate = DateTime.Now.Date;
+
+            string dateOfCreation = testDate.ToString();
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void DateOfCreationMinPlusOne()
+        {
+            var staff = new clsStaff();
+
+            DateTime testDate = DateTime.Now.Date.AddDays(1);
+
+            string dateOfCreation = testDate.ToString();
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void DateOfCreationExtremeMax()
+        {
+            var staff = new clsStaff();
+
+            DateTime testDate = DateTime.Now.Date.AddYears(100);
+
+            string dateOfCreation = testDate.ToString();
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void DateOfCreationInvalidDate()
+        {
+            var staff = new clsStaff();
+
+            string dateOfCreation = "This is not a date!";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAddressMinLessOne()
+        {
+            var staff = new clsStaff();
+
+            string staffAddress = "";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAddressMin()
+        {
+            var staff = new clsStaff();
+
+            string staffAddress = "n";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+        [TestMethod]
+        public void StaffAddressMinPlusOne()
+        {
+            var staff = new clsStaff();
+
+            string staffAddress = "ng";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAddressMaxLessOne()
+        {
+            var staff = new clsStaff();
+
+            string staffAddress = "".PadRight(49, 'n');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAddressMax()
+        {
+            var staff = new clsStaff();
+
+            string staffAddress = "".PadRight(50, 'n');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAddressMaxPlusOne()
+        {
+            var staff = new clsStaff();
+
+            string staffAddress = "".PadRight(51, 'n');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAddressMid()
+        {
+            var staff = new clsStaff();
+
+            string staffAddress = "".PadRight(25, 'n');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAddressExtremeMax()
+        {
+            var staff = new clsStaff();
+
+            string staffAddress = "".PadRight(500, 'n');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMinLessOne()
+        {
+            var staff = new clsStaff();
+
+            string staffName = "";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMin()
+        {
+            var staff = new clsStaff();
+
+            string staffName = "J";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMinPlusOne()
+        {
+            var staff = new clsStaff();
+
+            string staffName = "Jo";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMaxLessOne()
+        {
+            var staff = new clsStaff();
+
+            string staffName = "".PadRight(49, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMax()
+        {
+            var staff = new clsStaff();
+
+            string staffName = "".PadRight(50, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMaxPlusOne()
+        {
+            var staff = new clsStaff();
+
+            string staffName = "".PadRight(51, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMid()
+        {
+            var staff = new clsStaff();
+
+            string staffName = "".PadRight(25, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameExtremeMax()
+        {
+            var staff = new clsStaff();
+
+            string staffName = "".PadRight(500, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMinLessOne()
+        {
+            var staff = new clsStaff();
+
+            string staffPassword = "";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMin()
+        {
+            var staff = new clsStaff();
+
+            string staffPassword = "J";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMinPlusOne()
+        {
+            var staff = new clsStaff();
+
+            string staffPassword = "Jo";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMaxLessOne()
+        {
+            var staff = new clsStaff();
+
+            string staffPassword = "".PadRight(63, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMax()
+        {
+            var staff = new clsStaff();
+
+            string staffPassword = "".PadRight(64, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMaxPlusOne()
+        {
+            var staff = new clsStaff();
+
+            string staffPassword = "".PadRight(65, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMid()
+        {
+            var staff = new clsStaff();
+
+            string staffPassword = "".PadRight(23, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordExtremeMax()
+        {
+            var staff = new clsStaff();
+
+            string staffPassword = "".PadRight(500, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffUsernameMinLessOne()
+        {
+            var staff = new clsStaff();
+
+            string staffUsername = "";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffUsernameMin()
+        {
+            var staff = new clsStaff();
+
+            string staffUsername = "J";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffUsernameMinPlusOne()
+        {
+            var staff = new clsStaff();
+
+            string staffUsername = "Jo";
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffUsernameMaxLessOne()
+        {
+            var staff = new clsStaff();
+
+            string staffUsername = "".PadRight(49, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffUsernameMax()
+        {
+            var staff = new clsStaff();
+
+            string staffUsername = "".PadRight(50, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffUsernameMaxPlusOne()
+        {
+            var staff = new clsStaff();
+
+            string staffUsername = "".PadRight(51, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffUsernameMid()
+        {
+            var staff = new clsStaff();
+
+            string staffUsername = "".PadRight(25, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffUsernameExtremeMax()
+        {
+            var staff = new clsStaff();
+
+            string staffUsername = "".PadRight(500, 'J');
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAgeExtremeMin()
+        {
+            var staff = new clsStaff();
+
+            int staffAge = -800;
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAgeMinLessOne()
+        {
+            var staff = new clsStaff();
+
+            int staffAge = 15;
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAgeMin()
+        {
+            var staff = new clsStaff();
+
+            int staffAge = 16;
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAgeMinPlusOne()
+        {
+            var staff = new clsStaff();
+
+            int staffAge = 17;
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAgeMaxLessOne()
+        {
+            var staff = new clsStaff();
+
+            int staffAge = 79;
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAgeMax()
+        {
+            var staff = new clsStaff();
+
+            int staffAge = 80;
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAgeMaxPlusOne()
+        {
+            var staff = new clsStaff();
+
+            int staffAge = 81;
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAgeMid()
+        {
+            var staff = new clsStaff();
+
+            int staffAge = 40;
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAgeExtremeMax()
+        {
+            var staff = new clsStaff();
+
+            int staffAge = 800;
+
+            string error = staff.Valid(dateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+            Assert.AreNotEqual(error, "");
         }
     }
 }

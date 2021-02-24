@@ -10,13 +10,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Checks to see if 'isLoggedIn' has been set.
         if (Session["isLoggedIn"] == null)
         {
+            // Redirect the user back to StaffLogin page.
             Response.Redirect("StaffLogin.aspx");
         }
         else
         {
-            if (!(bool)Session["isLoggedIn"] || Session["isLoggedIn"] == null)
+            // If the user is not logged in.
+            if (!(bool)Session["isLoggedIn"])
             {
                 Response.Redirect("StaffLogin.aspx");
             }
@@ -25,22 +28,41 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        var staff = new clsStaff
+        var staff = new clsStaff();
+
+        int staffID = Convert.ToInt32(txtStaffID.Text);
+        string staffUsername = txtStaffUsername.Text;
+        string staffPassword = txtStaffPassword.Text;
+        string staffName = txtStaffName.Text;
+        string staffAddress = txtStaffAddress.Text;
+        string staffDateOfCreation = txtDateOfCreation.Text;
+        int staffAge = Convert.ToInt32(txtStaffAge.Text);
+        bool staffAdmin = chkAdmin.Checked;
+
+        // Check to see if the passed information is valid.
+        string error = staff.Valid(staffDateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
+
+        if(error == "")
         {
-            ID = Convert.ToInt32(txtStaffID.Text),
-            Username = txtStaffUsername.Text,
-            Password = txtStaffPassword.Text,
-            Name = txtStaffName.Text,
-            Address = txtStaffAddress.Text,
-            DateOfCreation = Convert.ToDateTime(txtDateOfCreation.Text),
-            Age = Convert.ToInt32(txtStaffAge.Text),
-            Admin = chkAdmin.Checked
-        };
+            staff.ID = staffID;
+            staff.Username = staffUsername;
+            staff.Password = staffPassword;
+            staff.Name = staffName;
+            staff.Address = staffAddress;
+            staff.DateOfCreation = Convert.ToDateTime(staffDateOfCreation);
+            staff.Age = staffAge;
+            staff.Admin = staffAdmin;
 
-        Session["staff"] = staff;
+            Session["staff"] = staff;
 
-        // Navigate to Staff Viewer Page.
-        Response.Redirect("StaffViewer.aspx");
+            // Navigate to Staff Viewer Page.
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            // Display the error message.
+            lblError.Text = error;
+        } 
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -82,6 +104,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnLogout_Click(object sender, EventArgs e)
     {
+        // Sets all login session information to null.
         Session["staffUsername"] = null;
         Session["staffPassword"] = null;
         Session["isAdmin"] = false;
