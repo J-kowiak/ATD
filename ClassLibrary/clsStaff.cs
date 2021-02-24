@@ -139,5 +139,86 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string dateOfCreation, string staffAddress, string staffName, string staffPassword, string staffUsername, int staffAge)
+        {
+            string error = "";
+
+            try
+            {
+                DateTime dateTemp = Convert.ToDateTime(dateOfCreation);
+
+                if (dateTemp < DateTime.Now.Date)
+                {
+                    error += "The date cannot be in the past : ";
+                }
+
+                if (dateTemp > DateTime.Now.Date)
+                {
+                    error += "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                error += "The date was not a valid date : ";
+            }
+            
+            if (staffAddress.Length == 0)
+            {
+                error += "The staff address may not be blank : ";
+            }
+
+            if (staffAddress.Length > 50)
+            {
+                error += "The staff address must be less than 50 characters : ";
+            }
+
+            if (staffName.Length == 0)
+            {
+                error += "The staff name may not be blank : ";
+            }
+
+            if (staffName.Length > 50)
+            {
+                error += "The staff name must be less than 50 characters : ";
+            }
+
+            if (staffPassword.Length == 0)
+            {
+                error += "The staff password may not be blank : ";
+            }
+
+            if (staffPassword.Length > 64)
+            {
+                error += "The staff password must be less than 64 characters : ";
+            }
+
+            if (staffUsername.Length == 0)
+            {
+                error += "The staff username may not be blank : ";
+            }
+
+            if (staffUsername.Length > 50)
+            {
+                error += "The staff username must be less than 50 characters : ";
+            }
+
+            if (staffAge > 80)
+            {
+                error += "The staff age must be younger than 80 : ";
+            }
+
+            if (staffAge < 16)
+            {
+                error += "The staff age must be older than 16 : ";
+            }
+
+            if (staffAge.GetType() != typeof(int))
+            {
+                error += "The staff age must an integer : ";
+            }
+
+            return error;
+        }
     }
 }
