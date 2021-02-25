@@ -97,15 +97,35 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int customerNo)
+        public bool Find(int CustomerNo)
         {
-            mCustomerNo = 21;
-            mName = "Billy";
-            mEmail = "billyparker@email.com";
-            mPassword = "somepass1";
-            mDateOfBirth = Convert.ToDateTime("19/05/2001");
-            mAddress = "59 Leicester Road";
-            mArchived = false;
-            return true;
+            clsDataConnection db = new clsDataConnection();
+
+            db.AddParameter("@CustomerNo", CustomerNo);
+
+            db.Execute("sproc_tblCustomer_FilterByCustomerNo");
+
+            // If one record is found.
+            if (db.Count == 1)
+            {
+                // Copy the data from the databse to the private data members.
+                // All string values are trimmed to ensure that tests pass.
+                this.CustomerNo = Convert.ToInt32(db.DataTable.Rows[0]["CustomerNo"]);
+                this.Email = Convert.ToString(db.DataTable.Rows[0]["Email"]);
+                this.DateOfBirth = Convert.ToDateTime(db.DataTable.Rows[0]["DateOfBirth"]);
+                this.Address = Convert.ToString(db.DataTable.Rows[0]["Address"]);
+                this.Name = Convert.ToString(db.DataTable.Rows[0]["Name"]);
+                this.Password = Convert.ToString(db.DataTable.Rows[0]["Password"]);
+                this.Archived = Convert.ToBoolean(db.DataTable.Rows[0]["Archived"]);
+
+                return true;
+            }
+            // If no record is found.
+            else
+            {
+                return false;
+            }
         }
+    }
+}
 

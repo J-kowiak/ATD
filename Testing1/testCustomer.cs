@@ -34,7 +34,7 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
-            String TestData = "billyeparker@gmail.com";
+            String TestData = "testemail@email.com";
             ACustomer.Email = TestData;
             Assert.AreEqual(ACustomer.Email, TestData);
         }
@@ -44,7 +44,7 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
-            String TestData = "password123";
+            String TestData = "somepass123";
             ACustomer.Password = TestData;
             Assert.AreEqual(ACustomer.Password, TestData);
         }
@@ -64,7 +64,7 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
-            String TestData = "15 Leicester Road";
+            String TestData = "59 Leicester Road";
             ACustomer.Address = TestData;
             Assert.AreEqual(ACustomer.Address, TestData);
         }
@@ -74,7 +74,7 @@ namespace Testing1
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
-            String TestData = "Billy";
+            String TestData = "test";
             ACustomer.Name = TestData;
             Assert.AreEqual(ACustomer.Name, TestData);
         }
@@ -96,7 +96,7 @@ namespace Testing1
             clsCustomer ACustomer = new clsCustomer();
             //variable to store the results of validation
             Boolean Found = false;
-            Int32 CustomerNo = 20;
+            Int32 CustomerNo = 5;
             Found = ACustomer.Find(CustomerNo);
             Assert.IsTrue(Found);
 
@@ -108,9 +108,9 @@ namespace Testing1
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 5;
             Found = ACustomer.Find(CustomerNo);
-            if (ACustomer.CustomerNo != 21)
+            if (ACustomer.CustomerNo != 5)
             {
                 OK = false;
             }
@@ -123,9 +123,9 @@ namespace Testing1
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 5;
             Found = ACustomer.Find(CustomerNo);
-            if (ACustomer.Name != "Billy")
+            if (ACustomer.Name != "Test")
             {
                 OK = false;
             }
@@ -139,9 +139,9 @@ namespace Testing1
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 5;
             Found = ACustomer.Find(CustomerNo);
-            if (ACustomer.Email != "billyparker@email.com")
+            if (ACustomer.Email != "testemail@email.com")
             {
                 OK = false;
             }
@@ -154,7 +154,7 @@ namespace Testing1
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 5;
             Found = ACustomer.Find(CustomerNo);
             if (ACustomer.Password != "somepass1")
             {
@@ -169,7 +169,7 @@ namespace Testing1
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 5;
             Found = ACustomer.Find(CustomerNo);
             if (ACustomer.DateOfBirth != Convert.ToDateTime("19/05/2001"))
             {
@@ -184,7 +184,7 @@ namespace Testing1
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 5;
             Found = ACustomer.Find(CustomerNo);
             if (ACustomer.Address != "59 Leicester Road")
             {
@@ -199,7 +199,7 @@ namespace Testing1
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerNo = 21;
+            Int32 CustomerNo = 5;
             Found = ACustomer.Find(CustomerNo);
             if (ACustomer.Archived != false)
             {
