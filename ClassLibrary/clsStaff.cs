@@ -118,7 +118,7 @@ namespace ClassLibrary
             db.Execute("sproc_tblStaff_FilterByStaffID");
 
             // If one record is found.
-            if(db.Count == 1)
+            if (db.Count == 1)
             {
                 // Copy the data from the databse to the private data members.
                 // All string values are trimmed to ensure that tests pass.

@@ -168,7 +168,7 @@ namespace Testing4
 
             found = staff.Find(staffID);
 
-            if(staff.Admin)
+            if (staff.Admin)
             {
                 OK = false;
             }
@@ -189,7 +189,7 @@ namespace Testing4
 
             found = staff.Find(staffID);
 
-            if(staff.DateOfCreation != Convert.ToDateTime("05/02/2021"))
+            if (staff.DateOfCreation != Convert.ToDateTime("05/02/2021"))
             {
                 OK = false;
             }

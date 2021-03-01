@@ -94,7 +94,7 @@ namespace Testing4
 
             found = staffLogin.Find(staffUsername, staffPassword);
 
-            if(staffLogin.Username != "johndoe@gmail.com")
+            if (staffLogin.Username != "johndoe@gmail.com")
             {
                 OK = false;
             }
