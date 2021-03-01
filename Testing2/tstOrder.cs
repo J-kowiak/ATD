@@ -23,8 +23,8 @@ namespace Testing2
 
             Int32 TestData = 1;
 
-            anOrder.OrderID = TestData;
-            Assert.AreEqual(anOrder.OrderID, TestData);
+            anOrder.OrderId = TestData;
+            Assert.AreEqual(anOrder.OrderId, TestData);
         }
 
         [TestMethod]
@@ -80,9 +80,9 @@ namespace Testing2
             //Boolean variable to store the result of the validation
             Boolean found = false;
             //create some test data to use with teh method 
-            Int32 OrderID = 321321;
+            Int32 OrderId = 321321;
             //invoke the method
-            found = anOrder.Find(OrderID);
+            found = anOrder.Find(OrderId);
             //test to see if the result is true
             Assert.IsTrue(found);
 
@@ -103,7 +103,7 @@ namespace Testing2
             //invoke the method
             found = anOrder.Find(OrderID);
             //check the order id
-            if (anOrder.OrderID != 321321)
+            if (anOrder.OrderId != 321321)
             {
                 OK = false;
             }
