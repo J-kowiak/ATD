@@ -30,19 +30,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         var staff = new clsStaff();
 
-        int staffID = Convert.ToInt32(txtStaffID.Text);
+        int staffID;
+        int staffAge;
+
+        try
+        {
+            staffID = Convert.ToInt32(txtStaffID.Text);
+            staffAge = Convert.ToInt32(txtStaffAge.Text);
+        }
+        catch (System.FormatException)
+        {
+            staffID = -1;
+            staffAge = -1;
+        }
+
         string staffUsername = txtStaffUsername.Text;
         string staffPassword = txtStaffPassword.Text;
         string staffName = txtStaffName.Text;
         string staffAddress = txtStaffAddress.Text;
         string staffDateOfCreation = txtDateOfCreation.Text;
-        int staffAge = Convert.ToInt32(txtStaffAge.Text);
         bool staffAdmin = chkAdmin.Checked;
 
         // Check to see if the passed information is valid.
         string error = staff.Valid(staffDateOfCreation, staffAddress, staffName, staffPassword, staffUsername, staffAge);
 
-        if(error == "")
+        if (error == "")
         {
             staff.ID = staffID;
             staff.Username = staffUsername;
@@ -88,13 +100,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // If the staff ID exists...
         if (found)
         {
-            txtStaffUsername.Text = staff.Username;
-            txtStaffPassword.Text = staff.Password;
-            txtStaffName.Text = staff.Name;
-            txtStaffAddress.Text = staff.Address;
-            txtDateOfCreation.Text = Convert.ToString(staff.DateOfCreation);
-            txtStaffAge.Text = Convert.ToString(staff.Age);
-            chkAdmin.Checked = staff.Admin;
+            if ((bool) Session["isAdmin"])
+            {
+                txtStaffUsername.Text = staff.Username;
+                txtStaffPassword.Text = staff.Password;
+                txtStaffName.Text = staff.Name;
+                txtStaffAddress.Text = staff.Address;
+                txtDateOfCreation.Text = Convert.ToString(staff.DateOfCreation);
+                txtStaffAge.Text = Convert.ToString(staff.Age);
+                chkAdmin.Checked = staff.Admin;
+            }
+            else
+            {
+                txtStaffUsername.Text = staff.Username;
+                txtStaffPassword.Text = "REDACTED";
+                txtStaffName.Text = staff.Name;
+                txtStaffAddress.Text = staff.Address;
+                txtDateOfCreation.Text = Convert.ToString(staff.DateOfCreation);
+                txtStaffAge.Text = Convert.ToString(staff.Age);
+                chkAdmin.Checked = staff.Admin;
+            }  
         }
         else
         {
