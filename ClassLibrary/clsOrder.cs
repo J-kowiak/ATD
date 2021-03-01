@@ -11,7 +11,7 @@ namespace ClassLibrary
         private DateTime mDateOrderMade;
         private bool mItemShipped;
 
-        public int OrderID {
+        public int OrderId {
             get
             {
                 //this line of code sends the data out of the property
@@ -73,12 +73,12 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int orderID)
+        public bool Find(int OrderId)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
             //add the parameter for the OrderId to search for
-            DB.AddParameter("OrderId", OrderID);
+            DB.AddParameter("@OrderId", OrderId);
             //execute the stored procedures
             DB.Execute("sproc_tblOrder_FilterByOrderId");
             //if one record is found (there should be either one or zero)

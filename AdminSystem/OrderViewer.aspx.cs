@@ -13,8 +13,12 @@ public partial class _1Viewer : System.Web.UI.Page
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
         //get data from the session object
-        AnOrder = (clsOrder)Session["AnOrder"];
+        AnOrder = (clsOrder) Session["AnOrder"];
         //display the order ID for this entry
-        Response.Write(AnOrder.OrderID);
+        Response.Write(AnOrder.OrderId);
+        Response.Write(AnOrder.ItemName);
+        Response.Write(AnOrder.Price);
+        Response.Write(AnOrder.DateOrderMade);
+        
     }
 }

@@ -34,6 +34,7 @@
         <br />
         <asp:Button ID="btnOK" runat="server" Text="OK" />
         <asp:Button ID="Button1" runat="server" Text="Button" />
+        <asp:Button ID="btnFind" runat="server" Text="Find" />
     </form>
 </body>
 </html>

@@ -108,4 +108,6 @@ namespace ClassLibrary
             mArchived = false;
             return true;
         }
+    }
+}
 
