@@ -70,7 +70,7 @@ namespace Testing3
         public void ProductIdPropertyOK()
         {
             // creates some data
-            int data = 251;
+            int data = 1;
             // Assigns the data to the property 
             stock.ProductId = data;
             // Tests to see if the value is the same
@@ -82,7 +82,7 @@ namespace Testing3
             // creates some data
             Boolean found = false;
             // creates another variable
-            Int32 id = 12;
+            Int32 id = 1;
             // Invokes a method
             found = stock.Find(id);
             Assert.IsTrue(found);
@@ -95,7 +95,7 @@ namespace Testing3
             // record if data is ok 
             Boolean OK = true;
             // creates another variable
-            Int32 id = 12;
+            Int32 id = 1;
             // Invokes a method
             found = stock.Find(id);
             //checks productId
@@ -114,7 +114,7 @@ namespace Testing3
             // record if data is ok 
             Boolean OK = true;
             // creates another variable
-            Int32 id = 12;
+            Int32 id = 1;
             // Invokes a method
             found = stock.Find(id);
             //checks productId
@@ -132,7 +132,7 @@ namespace Testing3
             // record if data is ok 
             Boolean OK = true;
             // creates another variable
-            Int32 id = 12;
+            Int32 id = 1;
             // Invokes a method
             found = stock.Find(id);
             //checks productId
@@ -150,7 +150,7 @@ namespace Testing3
             // record if data is ok 
             Boolean OK = true;
             // creates another variable
-            Int32 id = 12;
+            Int32 id = 1;
             // Invokes a method
             found = stock.Find(id);
             //checks productId
@@ -168,7 +168,7 @@ namespace Testing3
             // record if data is ok 
             Boolean OK = true;
             // creates another variable
-            Int32 id = 12;
+            Int32 id = 1;
             // Invokes a method
             found = stock.Find(id);
             //checks productId
@@ -186,7 +186,7 @@ namespace Testing3
             // record if data is ok 
             Boolean OK = true;
             // creates another variable
-            Int32 id = 12;
+            Int32 id = 1;
             // Invokes a method
             found = stock.Find(id);
             //checks productId
