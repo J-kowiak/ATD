@@ -96,11 +96,11 @@ namespace ClassLibrary
                 mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
                 mNextDelivery = Convert.ToDateTime(DB.DataTable.Rows[0]["NextDelivery"]);
                 mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
-                mSale_Ready = Convert.ToBoolean(DB.DataTable.Rows[0]["SaleReady"]);
+                mSale_Ready = Convert.ToBoolean(DB.DataTable.Rows[0]["Sale_Ready"]);
                 // returns everything that worked
                 return true;
             }
-            //if no record foubd
+            //if no record found
             else
             {
                 // indicate a problem

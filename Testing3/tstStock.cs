@@ -80,7 +80,7 @@ namespace Testing3
         public void FindMethodOK()
         {
             // creates some data
-            Boolean found = false;
+            Boolean found = true;
             // creates another variable
             Int32 id = 1;
             // Invokes a method
@@ -99,7 +99,7 @@ namespace Testing3
             // Invokes a method
             found = stock.Find(id);
             //checks productId
-            if (stock.ProductId != 12)
+            if (stock.ProductId != 1)
             {
                 OK = false;
             }
@@ -125,6 +125,7 @@ namespace Testing3
             // tests to see if result is ok
             Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestCategoryFound()
         {
             // Stores the result of the search
@@ -143,6 +144,7 @@ namespace Testing3
             // tests to see if result is ok
             Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestQuantityFound()
         {
             // Stores the result of the search
@@ -161,6 +163,7 @@ namespace Testing3
             // tests to see if result is ok
             Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestNextDeliveryFound()
         {
             // Stores the result of the search
@@ -179,6 +182,7 @@ namespace Testing3
             // tests to see if result is ok
             Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestSale_ReadyFound()
         {
             // Stores the result of the search
