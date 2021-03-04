@@ -39,4 +39,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsStock stock = new clsStock();
+        Int32 productId;
+        Boolean Found = false;
+        // get primary key from user
+        productId = Convert.ToInt32(txtProductId.Text);
+        // find record
+        Found = stock.Find(productId);
+        if (Found == true)
+        {
+            txtName.Text = stock.Name;
+            txtCategory.Text = stock.Category;
+            txtNextDelivery.Text = stock.NextDelivery.ToString();
+            txtQuantity.Text = stock.Quantity.ToString();
+            
+
+        }
+
+    }
 }
