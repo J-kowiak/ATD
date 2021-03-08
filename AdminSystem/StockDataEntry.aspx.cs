@@ -20,19 +20,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+        String Category = txtCategory.Text;
+        String Name = txtName.Text;
+        String NextDelivery = txtNextDelivery.Text;
+        int Quantity = Convert.ToInt32(txtQuantity);
+        String error = "";
         //Creates a new instance of stock
         clsStock stock = new clsStock();
-        // Captures the attribute 
-        stock.Category = txtCategory.Text;
-        stock.Name = txtName.Text;
-        stock.Quantity = Convert.ToInt32(txtQuantity.Text);
-        stock.ProductId = Convert.ToInt32(txtProductId.Text);
-        stock.NextDelivery = Convert.ToDateTime(txtNextDelivery.Text);
-        stock.Sale_Ready = Convert.ToBoolean(txtNextDelivery.Text);
-        // Stores attributes in session objecy
-        Session["stock"] = stock;
-        // Navigates to viewer page
-        Response.Redirect("StockViewer.aspx");
+
+        error = stock.Valid(Name, Category, Quantity, NextDelivery);
+        if (error == "")
+        {
+
+
+            // Captures the attribute 
+            stock.Category = Category;
+            stock.Name = Name;
+            stock.Quantity = Quantity;
+            stock.ProductId = Convert.ToInt32(txtProductId.Text);
+            stock.NextDelivery = Convert.ToDateTime(NextDelivery);
+            stock.Sale_Ready = Convert.ToBoolean(txtNextDelivery.Text);
+            // Stores attributes in session objecy
+            Session["stock"] = stock;
+            // Navigates to viewer page
+            Response.Redirect("StockViewer.aspx");
+        }
+        else
+            lblError.Text = error;
     }
 
     protected void txtCategory_TextChanged(object sender, EventArgs e)
