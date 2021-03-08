@@ -86,9 +86,9 @@ namespace Testing3
             // creates some data
             Boolean found = true;
             // creates another variable
-            Int32 id = 1;
+            Int32 ProductId = 1;
             // Invokes a method
-            found = stock.Find(id);
+            found = stock.Find(ProductId);
             Assert.IsTrue(found);
         }
         [TestMethod]

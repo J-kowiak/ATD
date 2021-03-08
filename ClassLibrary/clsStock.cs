@@ -79,7 +79,7 @@ namespace ClassLibrary
             }
                 }
 
-        public bool Find(int id)
+        public bool Find(int ProductId)
         {
 
             //create instance of data connection
