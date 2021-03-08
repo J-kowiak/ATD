@@ -79,7 +79,7 @@ namespace ClassLibrary
             }
                 }
 
-        public bool Find(int id)
+        public bool Find(int ProductId)
         {
 
             //create instance of data connection
@@ -96,11 +96,11 @@ namespace ClassLibrary
                 mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
                 mNextDelivery = Convert.ToDateTime(DB.DataTable.Rows[0]["NextDelivery"]);
                 mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
-                mSale_Ready = Convert.ToBoolean(DB.DataTable.Rows[0]["SaleReady"]);
+                mSale_Ready = Convert.ToBoolean(DB.DataTable.Rows[0]["Sale_Ready"]);
                 // returns everything that worked
                 return true;
             }
-            //if no record foubd
+            //if no record found
             else
             {
                 // indicate a problem
@@ -108,6 +108,50 @@ namespace ClassLibrary
             }
 
 
+        }
+
+        public string Valid(string name, string category, int quantity, string nextDelivery)
+        {
+           String error = "";
+            try
+            {
+
+
+                DateTime temp = Convert.ToDateTime(nextDelivery);
+                if (temp < DateTime.Now.Date)
+                {
+                    error += "Date cannot be in the past : ";
+
+                }
+                if (temp > DateTime.Now.Date)
+                {
+                    error += "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                error += "Date is not valid : ";
+            }
+
+
+            if (name.Length == 0)
+            {
+                error += "The name cannot be blank : ";
+            }
+            if (name.Length > 50)
+            {
+                error += "The name cannot be larger than 50 characters : ";
+            }
+
+            if (category.Length == 0)
+            {
+                error += "The category cannot be blank : ";
+            }
+            if (category.Length > 50)
+            {
+                error += "The category cannot be larger than 50 characters : ";
+            }
+            return error;
         }
     }
 }
