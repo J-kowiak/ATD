@@ -7,164 +7,136 @@ namespace Testing4
     [TestClass]
     public class tstStaffLogin
     {
+        // Fields.
+        private clsStaffLogin staffLogin;
+
+        // Test Data.
+        private readonly string staffUsername = "johndoe@gmail.com";
+        private readonly string staffPassword = "test123";
+        private readonly bool staffAdmin = true;
+
         [TestMethod]
         public void InstanceOK()
         {
-            // Create an instance of the class we want to create.
-            clsStaffLogin staffLogin = new clsStaffLogin();
+            // Create an instance of clsStaffLogin.
+            this.staffLogin = new clsStaffLogin();
 
-            // Test to see that it exists.
-            Assert.IsNotNull(staffLogin);
+            // Test to see that the class exists.
+            Assert.IsNotNull(this.staffLogin);
         }
 
         [TestMethod]
         public void UsernameOK()
         {
-            var staffLogin = new clsStaffLogin();
+            // Create an instance of clsStaffLogin.
+            this.staffLogin = new clsStaffLogin();
 
-            string testData = "JohnDoe@gmail.com";
+            // Set staffLogin's Username property to the test data.
+            this.staffLogin.Username = this.staffUsername;
 
-            staffLogin.Username = testData;
-
-            Assert.AreEqual(staffLogin.Username, testData);
+            // Test to see if staffLogin's Username property is equal to the test data.
+            Assert.AreEqual(this.staffLogin.Username, this.staffUsername);
         }
 
         [TestMethod]
         public void PasswordOK()
         {
-            var staffLogin = new clsStaffLogin();
+            // Create an instance of clsStaffLogin.
+            this.staffLogin = new clsStaffLogin();
 
-            string testData = "test123";
+            // Set staffLogin's Password property to the test data.
+            this.staffLogin.Password = this.staffPassword;
 
-            staffLogin.Password = testData;
-
-            Assert.AreEqual(staffLogin.Password, testData);
-        }
-
-        [TestMethod]
-        public void LoggedOK()
-        {
-            var staffLogin = new clsStaffLogin();
-
-            Boolean testData = true;
-
-            staffLogin.Logged = testData;
-
-            Assert.AreEqual(staffLogin.Logged, testData);
+            // Test to see if staffLogin's Password property is equal to the test data.
+            Assert.AreEqual(this.staffLogin.Password, this.staffPassword);
         }
 
         [TestMethod]
         public void AdminOK()
         {
-            var staffLogin = new clsStaffLogin();
+            // Create an instance of clsStaffLogin.
+            this.staffLogin = new clsStaffLogin();
 
-            Boolean testData = true;
+            // Set staffLogin's Admin property to the test data.
+            this.staffLogin.Admin = this.staffAdmin;
 
-            staffLogin.Admin = testData;
-
-            Assert.AreEqual(staffLogin.Admin, testData);
+            // Test to see if staffLogin's Admin property is equal to the test data.
+            Assert.AreEqual(this.staffLogin.Admin, this.staffAdmin);
         }
 
         [TestMethod]
         public void FindMethodOK()
         {
-            var staffLogin = new clsStaffLogin();
+            // Create an instance of clsStaffLogin.
+            this.staffLogin = new clsStaffLogin();
 
-            Boolean found = false;
+            // Variable which stores whether or not the staff member exists in the database.
+            Boolean found = this.staffLogin.Find(this.staffUsername, this.staffPassword);
 
-            string staffUsername = "johndoe@gmail.com";
-            string staffPassword = "test123";
-
-            found = staffLogin.Find(staffUsername, staffPassword);
-
+            // Test to see if the staff member exists within the database.
             Assert.IsTrue(found);
         }
 
         [TestMethod]
         public void TestStaffUsernameFound()
         {
-            var staffLogin = new clsStaffLogin();
+            // Create an instance of clsStaffLogin.
+            this.staffLogin = new clsStaffLogin();
 
-            Boolean found = false;
+            // Variable which stores whether or not the staff member's username exists in the database.
+            Boolean found = this.staffLogin.Find(this.staffUsername, this.staffPassword);
 
             Boolean OK = true;
 
-            string staffUsername = "johndoe@gmail.com";
-            string staffPassword = "test123";
-
-            found = staffLogin.Find(staffUsername, staffPassword);
-
-            if (staffLogin.Username != "johndoe@gmail.com")
+            // Checks to see if staffLogin's Username property is equal to staffUsername.
+            if (this.staffLogin.Username != this.staffUsername)
             {
                 OK = false;
             }
 
+            // Test to see if the staff member's username exists within the database.
             Assert.IsTrue(OK);
         }
 
         [TestMethod]
         public void TestStaffPasswordFound()
         {
-            var staffLogin = new clsStaffLogin();
+            // Create an instance of clsStaffLogin.
+            this.staffLogin = new clsStaffLogin();
 
-            Boolean found = false;
+            // Variable which stores whether or not the staff member's password exists in the database.
+            Boolean found = this.staffLogin.Find(this.staffUsername, this.staffPassword);
 
             Boolean OK = true;
 
-            string staffUsername = "johndoe@gmail.com";
-            string staffPassword = "test123";
-
-            found = staffLogin.Find(staffUsername, staffPassword);
-
-            if (staffLogin.Password != "a41949ce331e10f588d406296f955ddbc3b54237b42e720a9e1d6b412d580741")
+            // Checks to see if staffLogin's Password property is equal to staffUsername.
+            if (this.staffLogin.Password != clsStaffLogin.HashPassword(this.staffUsername, this.staffPassword))
             {
                 OK = false;
             }
 
+            // Test to see if the staff member's password exists within the database.
             Assert.IsTrue(OK);
         }
 
         [TestMethod]
         public void TestStaffIsAdminFound()
         {
-            var staffLogin = new clsStaffLogin();
+            // Create an instance of clsStaffLogin.
+            this.staffLogin = new clsStaffLogin();
 
-            Boolean found = false;
+            // Variable which stores whether or not the staff member is an admin.
+            Boolean found = this.staffLogin.Find(this.staffUsername, this.staffPassword);
 
             Boolean OK = true;
 
-            string staffUsername = "johndoe@gmail.com";
-            string staffPassword = "test123";
-
-            found = staffLogin.Find(staffUsername, staffPassword);
-
-            if (!staffLogin.Admin)
+            // Checks to see if staffLogin's Admin property is true or false.
+            if (!this.staffLogin.Admin)
             {
                 OK = false;
             }
 
-            Assert.IsTrue(OK);
-        }
-
-        [TestMethod]
-        public void TestStaffIsLoggedIn()
-        {
-            var staffLogin = new clsStaffLogin();
-
-            Boolean found = false;
-
-            Boolean OK = true;
-
-            string staffUsername = "johndoe@gmail.com";
-            string staffPassword = "test123";
-
-            found = staffLogin.Find(staffUsername, staffPassword);
-
-            if (!staffLogin.Logged)
-            {
-                OK = false;
-            }
-
+            // Test to see if the staff member's admin privilege is true or false within the database.
             Assert.IsTrue(OK);
         }
     }
