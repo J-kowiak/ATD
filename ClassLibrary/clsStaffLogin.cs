@@ -9,11 +9,37 @@ namespace ClassLibrary
 {
     public class clsStaffLogin
     {
+        // Fields.
+        private int staffID;
         private string staffUsername;
         private string staffPassword;
-        private bool isLoggedIn;
         private bool isAdmin;
 
+        private clsDataConnection db;
+
+        // Constructor.
+        public clsStaffLogin()
+        {
+            this.db = new clsDataConnection();
+        }
+
+        // Methods.
+
+        // Getter and Setter for staff ID.
+        public int ID
+        {
+            get
+            {
+                return this.staffID;
+            }
+
+            set
+            {
+                this.staffID = value;
+            }
+        }
+
+        // Getter and Setter for staff username.
         public string Username
         {
             get
@@ -27,6 +53,7 @@ namespace ClassLibrary
             }
         }
 
+        // Getter and Setter for staff password.
         public string Password
         {
             get
@@ -40,19 +67,7 @@ namespace ClassLibrary
             }
         }
 
-        public bool Logged
-        {
-            get
-            {
-                return this.isLoggedIn;
-            }
-
-            set
-            {
-                this.isLoggedIn = value;
-            }
-        }
-
+        // Getter and Setter for staff's admin privilege.
         public bool Admin
         {
             get
@@ -66,22 +81,29 @@ namespace ClassLibrary
             }
         }
 
+        /*
+         * Finds the staff memeber whose information is passed to the 
+         * method's parameters.
+         * 
+         * If the parameters match with a record in the database, true is
+         * returned, false otherwise.
+         */
         public bool Find(string staffUsername, string staffPassword)
         {
-            var db = new clsDataConnection();
+            //this.db = new clsDataConnection();
 
-            db.AddParameter("@staffUsername", staffUsername);
-            db.AddParameter("@staffPassword", HashPassword(staffUsername, staffPassword));
+            this.db.AddParameter("@staffUsername", staffUsername);
+            this.db.AddParameter("@staffPassword", HashPassword(staffUsername, staffPassword));
 
-            db.Execute("sproc_tblStaffLogin_CheckIfCorrectDetails");
+            this.db.Execute("sproc_tblStaffLogin_CheckIfCorrectDetails");
 
             // If one record is found.
-            if (db.Count == 1)
+            if (this.db.Count == 1)
             {
-                this.staffUsername = Convert.ToString(db.DataTable.Rows[0]["staffUsername"]).Trim();
-                this.staffPassword = Convert.ToString(db.DataTable.Rows[0]["staffPassword"]).Trim();
-                this.isAdmin = Convert.ToBoolean(db.DataTable.Rows[0]["admin"]);
-                this.isLoggedIn = true;
+                this.staffID = Convert.ToInt32(this.db.DataTable.Rows[0]["staffID"]);
+                this.staffUsername = Convert.ToString(this.db.DataTable.Rows[0]["staffUsername"]).Trim();
+                this.staffPassword = Convert.ToString(this.db.DataTable.Rows[0]["staffPassword"]).Trim();
+                this.isAdmin = Convert.ToBoolean(this.db.DataTable.Rows[0]["admin"]);
 
                 return true;
             }
@@ -92,9 +114,10 @@ namespace ClassLibrary
             }
         }
 
-        private string HashPassword(string staffUsername, string staffPassword)
+        // Hashes the staff member's password using SHA256.
+        public static string HashPassword(string staffUsername, string staffPassword)
         {
-            // Staff Username acts as a salt.
+            // Staff username acts as a salt.
             string password = staffUsername + staffPassword;
 
             using (SHA256 hash = SHA256.Create()) // Use SHA256 hashing algorithm.
@@ -106,7 +129,7 @@ namespace ClassLibrary
 
                 for (int i = 0; i < passwordBytes.Length; i++)
                 {
-                    hashedPassword += passwordBytes[i].ToString("x2"); // Formats each byte.
+                    hashedPassword += passwordBytes[i].ToString("x2"); // Formats each byte to hexadecimal.
                 }
 
                 return hashedPassword;

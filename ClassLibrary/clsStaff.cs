@@ -4,6 +4,7 @@ namespace ClassLibrary
 {
     public class clsStaff
     {
+        // Fields.
         private int staffID;
         private Boolean admin;
         private DateTime dateOfCreation;
@@ -13,6 +14,17 @@ namespace ClassLibrary
         private string staffUsername;
         private int staffAge;
 
+        private clsDataConnection db;
+
+        // Constructor.
+        public clsStaff()
+        {
+            this.db = new clsDataConnection();
+        }
+
+        // Methods.
+
+        // Getter and Setter for staff ID.
         public int ID
         {
             get
@@ -25,6 +37,7 @@ namespace ClassLibrary
             }
         }
 
+        // Getter and Setter for staff's admin privilege.
         public bool Admin
         {
             get
@@ -37,6 +50,7 @@ namespace ClassLibrary
             }
         }
 
+        // Getter and Setter for staff member's date of account creation.
         public DateTime DateOfCreation
         {
             get
@@ -49,6 +63,7 @@ namespace ClassLibrary
             }
         }
 
+        // Getter and Setter for staff member's address.
         public string Address
         {
             get
@@ -61,6 +76,7 @@ namespace ClassLibrary
             }
         }
 
+        // Getter and Setter for staff member's name.
         public string Name
         {
             get
@@ -73,6 +89,7 @@ namespace ClassLibrary
             }
         }
 
+        // Getter and Setter for staff member's password.
         public string Password
         {
             get
@@ -85,6 +102,7 @@ namespace ClassLibrary
             }
         }
 
+        // Getter and Setter for staff member's username.
         public string Username
         {
             get
@@ -97,6 +115,7 @@ namespace ClassLibrary
             }
         }
 
+        // Getter and Setter for staff member's age.
         public int Age
         {
             get
@@ -109,16 +128,26 @@ namespace ClassLibrary
             }
         }
 
+        /*
+         * Finds the staff memeber whose information is passed to the 
+         * method's parameters.
+         * 
+         * If the parameters match with a record in the database, true is
+         * returned, false otherwise.
+         */
         public bool Find(int staffID)
         {
-            var db = new clsDataConnection();
+            // Connect to the database.
+            this.db = new clsDataConnection();
 
-            db.AddParameter("@staffID", staffID);
+            // Set the parameter for the stored procedure (sproc_tblStaff_FilterByStaffID).
+            this.db.AddParameter("@staffID", staffID);
 
-            db.Execute("sproc_tblStaff_FilterByStaffID");
+            // Execute the stored procedure.
+            this.db.Execute("sproc_tblStaff_FilterByStaffID");
 
             // If one record is found.
-            if (db.Count == 1)
+            if (this.db.Count == 1)
             {
                 // Copy the data from the databse to the private data members.
                 // All string values are trimmed to ensure that tests pass.
@@ -140,28 +169,11 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string dateOfCreation, string staffAddress, string staffName, string staffPassword, string staffUsername, int staffAge)
+        // Validates the information that the user has entered.
+        public string Valid(string staffAddress, string staffName, string staffPassword, string staffUsername, int staffAge)
         {
+            // Variable to store the error message.
             string error = "";
-
-            try
-            {
-                DateTime dateTemp = Convert.ToDateTime(dateOfCreation);
-
-                if (dateTemp < DateTime.Now.Date)
-                {
-                    error += "The date cannot be in the past : ";
-                }
-
-                if (dateTemp > DateTime.Now.Date)
-                {
-                    error += "The date cannot be in the future : ";
-                }
-            }
-            catch
-            {
-                error += "The date was not a valid date : ";
-            }
             
             if (staffAddress.Length == 0)
             {
