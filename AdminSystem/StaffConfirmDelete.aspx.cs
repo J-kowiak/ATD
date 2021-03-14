@@ -8,6 +8,7 @@ using ClassLibrary;
 
 public partial class _1_ConfirmDelete : System.Web.UI.Page
 {
+    // Fields.
     private Int32 staffID;
 
     // Event handler for the load event.

@@ -156,16 +156,16 @@ namespace Testing4
             // Variable which stores whether or not the staff member's ID exists in the database.
             Boolean found = this.staff.Find(this.staffID);
 
-            Boolean OK = true;
+            Boolean ok = true;
 
             // Checks to see if staff's ID property is equal to staffID.
             if (this.staff.ID != this.staffID)
             {
-                OK = false;
+                ok = false;
             }
 
             // Test to see if the staff member's ID exists within the database.
-            Assert.IsTrue(OK);
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
@@ -177,16 +177,16 @@ namespace Testing4
             // Variable which stores whether or not the staff member's ID exists in the database. 
             Boolean found = this.staff.Find(this.staffID);
 
-            Boolean OK = true;
+            Boolean ok = true;
 
             // Checks to see if staff's Admin property is equal to true or false.
             if (!this.staff.Admin)
             {
-                OK = false;
+                ok = false;
             }
 
             // Test to see if the staff member's admin privilege is true or false within the database.
-            Assert.IsTrue(OK);
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
@@ -198,16 +198,16 @@ namespace Testing4
             // Variable which stores whether or not the staff member's ID exists in the database. 
             Boolean found = this.staff.Find(this.staffID);
 
-            Boolean OK = true;
+            Boolean ok = true;
 
             // Checks to see if the staff's DateOfCreation property is equal to dateOfCreation.
             if (this.staff.DateOfCreation != this.dateOfCreation)
             {
-                OK = false;
+                ok = false;
             }
 
             // Tests to see if the staff member's DateOfCreation exists within the database.
-            Assert.IsTrue(OK);
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
@@ -219,16 +219,16 @@ namespace Testing4
             // Variable which stores whether or not the staff member's ID exists in the database. 
             Boolean found = this.staff.Find(this.staffID);
 
-            Boolean OK = true;
+            Boolean ok = true;
 
             // Checks to see if the staff's Address property is equal to staffAddress.
             if (this.staff.Address != this.staffAddress)
             {
-                OK = false;
+                ok = false;
             }
 
             // Tests to see if the staff member's Address exists within the database.
-            Assert.IsTrue(OK);
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
@@ -239,7 +239,7 @@ namespace Testing4
 
             Boolean found = false;
 
-            Boolean OK = true;
+            Boolean ok = true;
 
             Int32 staffID = this.staffID;
 
@@ -249,11 +249,11 @@ namespace Testing4
             // Checks to see if the staff's Address property is equal to staffName.
             if (this.staff.Name != this.staffName)
             {
-                OK = false;
+                ok = false;
             }
 
             // Tests to see if the staff member's Name exists within the database.
-            Assert.IsTrue(OK);
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
@@ -265,16 +265,16 @@ namespace Testing4
             // Variable which stores whether or not the staff member's ID exists in the database. 
             Boolean found = this.staff.Find(this.staffID);
 
-            Boolean OK = true;
+            Boolean ok = true;
 
             // Checks to see if the staff's Password property is equal to staffPassword.
             if (this.staff.Password != clsStaffLogin.HashPassword(this.staffUsername, this.staffPassword))
             {
-                OK = false;
+                ok = false;
             }
 
             // Tests to see if the staff member's Password exists within the database.
-            Assert.IsTrue(OK);
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
@@ -286,16 +286,16 @@ namespace Testing4
             // Variable which stores whether or not the staff member's ID exists in the database. 
             Boolean found = this.staff.Find(this.staffID);
 
-            Boolean OK = true;
+            Boolean ok = true;
 
             // Checks to see if the staff's Username property is equal to staffUsername.
             if (this.staff.Username != this.staffUsername)
             {
-                OK = false;
+                ok = false;
             }
 
             // Tests to see if the staff member's Username exists within the database.
-            Assert.IsTrue(OK);
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
@@ -307,16 +307,16 @@ namespace Testing4
             // Variable which stores whether or not the staff member's ID exists in the database. 
             Boolean found = this.staff.Find(this.staffID);
 
-            Boolean OK = true;
+            Boolean ok = true;
 
             // Checks to see if the staff's Age property is equal to staffAge.
             if (this.staff.Age != this.staffAge)
             {
-                OK = false;
+                ok = false;
             }
 
             // Tests to see if the staff member's Age exists within the database.
-            Assert.IsTrue(OK);
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]

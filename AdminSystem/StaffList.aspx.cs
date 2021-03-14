@@ -41,6 +41,7 @@ public partial class _1_List : System.Web.UI.Page
         }
     }
 
+    // Displays all staff members on the list box.
     public void DisplayStaff()
     {
         // Create an instance of clsStaffCollection.
@@ -67,12 +68,12 @@ public partial class _1_List : System.Web.UI.Page
 
     // Event handler for the Edit button.
     protected void btnEdit_Click(object sender, EventArgs e)
-    { 
+    {
         // If a record has been selected from the list.
         if (lstStaffList.SelectedIndex != -1)
         {
             // Ensures that a staff member can only edit their own data if they are not an admin.
-            if (lstStaffList.SelectedIndex == (int)Session["staffID"] - 1 && !(bool)Session["isAdmin"])
+            if (Convert.ToInt32(lstStaffList.SelectedValue) == (int)Session["staffID"] && !(bool)Session["isAdmin"])
             { 
                 Int32 staffID = Convert.ToInt32(lstStaffList.SelectedValue);
 
@@ -133,12 +134,12 @@ public partial class _1_List : System.Web.UI.Page
         // If a record has been selected from the list.
         if (lstStaffList.SelectedIndex != -1)
         {
-            // Get the primary key valaue of the record to delete,
-            // also create a variable to store the primary key value of the record to be deleted.
-            Int32 staffID = Convert.ToInt32(lstStaffList.SelectedValue);
+            // Get the primary key valaue of the record to view,
+            // also create a variable to store the primary key value of the record to be viewed.
+            Int32 selectedStaffID = Convert.ToInt32(lstStaffList.SelectedValue);
 
             // Store the data in the session object.
-            Session["staffID"] = staffID;
+            Session["selectedStaffID"] = selectedStaffID;
 
             // Redirect to the view page.
             Response.Redirect("StaffViewer.aspx");

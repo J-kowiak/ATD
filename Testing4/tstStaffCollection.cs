@@ -17,18 +17,23 @@ namespace Testing4
         [TestMethod]
         public void InstanceOK()
         {
+            // Create an instance of clsStaffCollection.
             this.allStaff = new clsStaffCollection();
 
+            // Test to see that the class exists.
             Assert.IsNotNull(this.allStaff);
         }
 
         [TestMethod]
         public void StaffListOK()
         {
+            // Create an instance of the clsStaffCollection class.
             this.allStaff = new clsStaffCollection();
 
+            // Create an instance of List<clsStaff>.
             this.staffList = new List<clsStaff>();
 
+            // Create an item of test data.
             this.staff = new clsStaff
             {
                 ID = 2,
@@ -41,18 +46,23 @@ namespace Testing4
                 Age = 30
             };
 
+            // Add the test item to the staff list.
             this.staffList.Add(staff);
 
+            // Set the allStaff's StaffList property to the newly created staff list.
             this.allStaff.StaffList = this.staffList;
 
+            // Test to see allStaff's StaffList property is equal to the newly created staff list.
             Assert.AreEqual(this.allStaff.StaffList, this.staffList);
         }
 
         [TestMethod]
         public void ThisStaffMemberOK()
         {
+            // Create an instance of the clsStaffCollection class.
             this.allStaff = new clsStaffCollection();
 
+            // Create an item of test data.
             this.staff = new clsStaff
             {
                 ID = 2,
@@ -65,18 +75,23 @@ namespace Testing4
                 Age = 30
             };
 
+            // Set the current collection's staff member to the test data.
             this.allStaff.ThisStaffMember = this.staff;
 
+            // Test to see if the current collection's staff member is equal to the test data.
             Assert.AreEqual(this.allStaff.ThisStaffMember, this.staff);
         }
 
         [TestMethod]
         public void ListAndCountOK()
         {
+            // Create an instance of the clsStaffCollection class.
             this.allStaff = new clsStaffCollection();
 
+            // Create an instance of List<clsStaff>.
             this.staffList = new List<clsStaff>();
 
+            // Create an item of test data.
             this.staff = new clsStaff
             {
                 ID = 2,
@@ -89,10 +104,13 @@ namespace Testing4
                 Age = 30
             };
 
+            // Add the test item to the staff list.
             this.staffList.Add(this.staff);
 
+            // Set the allStaff's StaffList property to the newly created staff list.
             this.allStaff.StaffList = this.staffList;
 
+            // Test to see if both the created lists have the same count.
             Assert.AreEqual(this.allStaff.Count, this.staffList.Count);
         }
         
@@ -126,7 +144,7 @@ namespace Testing4
             // Find the record.
             this.allStaff.ThisStaffMember.Find(primaryKey);
 
-            // Test to see that the two values are the same.
+            // Test to see ThisStaffMember matches the test data.
             Assert.AreEqual(this.allStaff.ThisStaffMember, this.staff);
         }
 
@@ -158,7 +176,6 @@ namespace Testing4
             this.staff.ID = primaryKey;
 
             // Modify the test data.
-
             this.staff = new clsStaff()
             {
                 ID = primaryKey,
@@ -241,13 +258,13 @@ namespace Testing4
         public void ReportByNameNoneFound()
         {
             // Create an instance of the filtered data.
-            var fileteredStaff = new clsStaffCollection();
+            var filteredStaff = new clsStaffCollection();
 
             // Apply a name that does not exist.
-            fileteredStaff.ReportByName("Ad Min");
+            filteredStaff.ReportByName("Ad Min");
 
             // Test to see that there are no records.
-            Assert.AreEqual(0, fileteredStaff.Count);
+            Assert.AreEqual(0, filteredStaff.Count);
         }
 
         [TestMethod]
@@ -265,13 +282,13 @@ namespace Testing4
             // Check that the correct number of records are found.
             if (filteredStaff.Count == 2)
             {
-                // Check that the first record is ID 1.
+                // Check that the first record is ID 1 (John Doe).
                 if (filteredStaff.StaffList[0].ID != 1)
                 {
                     ok = false;
                 }
 
-                // Check that the second record is ID 2.
+                // Check that the second record is ID 2 (Jane Doe).
                 if (filteredStaff.StaffList[1].ID != 2)
                 {
                     ok = false;

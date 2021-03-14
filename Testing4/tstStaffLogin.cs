@@ -86,16 +86,16 @@ namespace Testing4
             // Variable which stores whether or not the staff member's username exists in the database.
             Boolean found = this.staffLogin.Find(this.staffUsername, this.staffPassword);
 
-            Boolean OK = true;
+            Boolean ok = true;
 
             // Checks to see if staffLogin's Username property is equal to staffUsername.
             if (this.staffLogin.Username != this.staffUsername)
             {
-                OK = false;
+                ok = false;
             }
 
             // Test to see if the staff member's username exists within the database.
-            Assert.IsTrue(OK);
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
@@ -107,16 +107,16 @@ namespace Testing4
             // Variable which stores whether or not the staff member's password exists in the database.
             Boolean found = this.staffLogin.Find(this.staffUsername, this.staffPassword);
 
-            Boolean OK = true;
+            Boolean ok = true;
 
             // Checks to see if staffLogin's Password property is equal to staffUsername.
             if (this.staffLogin.Password != clsStaffLogin.HashPassword(this.staffUsername, this.staffPassword))
             {
-                OK = false;
+                ok = false;
             }
 
             // Test to see if the staff member's password exists within the database.
-            Assert.IsTrue(OK);
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
@@ -128,16 +128,16 @@ namespace Testing4
             // Variable which stores whether or not the staff member is an admin.
             Boolean found = this.staffLogin.Find(this.staffUsername, this.staffPassword);
 
-            Boolean OK = true;
+            Boolean ok = true;
 
             // Checks to see if staffLogin's Admin property is true or false.
             if (!this.staffLogin.Admin)
             {
-                OK = false;
+                ok = false;
             }
 
             // Test to see if the staff member's admin privilege is true or false within the database.
-            Assert.IsTrue(OK);
+            Assert.IsTrue(ok);
         }
     }
 }
