@@ -90,16 +90,20 @@ namespace ClassLibrary
          */
         public bool Find(string staffUsername, string staffPassword)
         {
-            //this.db = new clsDataConnection();
+            // Connect to the database.
+            this.db = new clsDataConnection();
 
+            // Set the parameter for the stored procedure (sproc_tblStaff_CheckIfCorrectDetails).
             this.db.AddParameter("@staffUsername", staffUsername);
             this.db.AddParameter("@staffPassword", HashPassword(staffUsername, staffPassword));
 
+            // Execute the stored procedure.
             this.db.Execute("sproc_tblStaffLogin_CheckIfCorrectDetails");
 
             // If one record is found.
             if (this.db.Count == 1)
             {
+                // Copy the data from the databse to the private data members.
                 this.staffID = Convert.ToInt32(this.db.DataTable.Rows[0]["staffID"]);
                 this.staffUsername = Convert.ToString(this.db.DataTable.Rows[0]["staffUsername"]).Trim();
                 this.staffPassword = Convert.ToString(this.db.DataTable.Rows[0]["staffPassword"]).Trim();

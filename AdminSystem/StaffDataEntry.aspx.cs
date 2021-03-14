@@ -8,7 +8,9 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    // Fields.
     private Int32 staffID;
+    private bool isEdit;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -38,18 +40,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             if (this.staffID != -1)
             {
                 // Display the current data for the record.
-                DisplayAddress();
+                DisplayStaff();
             }
             else
             {
                 // Auto-assign not editable values.
                 txtStaffID.Text = 0.ToString();
+                txtStaffID.ReadOnly = true;
                 txtDateOfCreation.Text = DateTime.Now.ToString();
             }
         }
     }
 
-    private void DisplayAddress()
+    // Displays the selected information from StaffList.
+    private void DisplayStaff()
     {
         // Create an instance of clsStaffCollection.
         var staffList = new clsStaffCollection();
@@ -66,6 +70,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtDateOfCreation.Text = staffList.ThisStaffMember.DateOfCreation.ToString();
         txtStaffAge.Text = staffList.ThisStaffMember.Age.ToString();
         chkAdmin.Checked = staffList.ThisStaffMember.Admin;
+
+        this.isEdit = true;
     }
 
     // Event handler for the OK buttton.
@@ -85,7 +91,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
         catch (System.FormatException)
         {
-            staffAge = -1;
+            staffID = -1;
             staffAge = -1;
         }
 
@@ -93,7 +99,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string staffPassword = txtStaffPassword.Text;
         string staffName = txtStaffName.Text;
         string staffAddress = txtStaffAddress.Text;
-        string staffDateOfCreation = DateTime.Now.ToString();
         bool staffAdmin = chkAdmin.Checked;
 
         // Check to see if the passed information is valid.
@@ -108,7 +113,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             staff.Password = clsStaffLogin.HashPassword(staffUsername, staffPassword);
             staff.Name = staffName;
             staff.Address = staffAddress;
-            staff.DateOfCreation = Convert.ToDateTime(staffDateOfCreation);
+            staff.DateOfCreation = Convert.ToDateTime(txtDateOfCreation.Text);
             staff.Age = staffAge;
             staff.Admin = staffAdmin;
 
@@ -189,7 +194,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 txtStaffUsername.Text = staff.Username;
                 txtStaffPassword.Text = "REDACTED";
                 txtStaffName.Text = staff.Name;
-                txtStaffAddress.Text = staff.Address;
+                txtStaffAddress.Text = "REDACTED";
                 txtDateOfCreation.Text = Convert.ToString(staff.DateOfCreation);
                 txtStaffAge.Text = Convert.ToString(staff.Age);
                 chkAdmin.Checked = staff.Admin;

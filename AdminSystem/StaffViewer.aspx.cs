@@ -30,13 +30,13 @@ public partial class _1Viewer : System.Web.UI.Page
         var staff = new clsStaff();
 
         /* 
-         * Check to see if the staff member's ID is within the database, 
+         * Check to see if the selected staff member's ID is within the database, 
          * if so, populate clsStaff's properties.
          */ 
-        staff.Find((int)Session["staffID"]);
+        staff.Find((int)Session["selectedStaffID"]);
 
-        // Checks to see if the staff member has admin privileges.
-        if ((bool)Session["isAdmin"])
+        // Checks to see if the staff member has admin privileges or the if the selected user is the actual user itself.
+        if ((bool)Session["isAdmin"] || (int) Session["selectedStaffID"] == (int) Session["staffID"])
         {
             // Admin view - all data is available.
             Response.Write("Staff ID: " + staff.ID + "<br>");
@@ -55,7 +55,7 @@ public partial class _1Viewer : System.Web.UI.Page
             Response.Write("Staff Username: " + staff.Username + "<br>");
             Response.Write("Staff Password: REDACTED" + "<br>");
             Response.Write("Staff Name: " + staff.Name + "<br>");
-            Response.Write("Staff Address: " + staff.Address + "<br>");
+            Response.Write("Staff Address: REDACTED" + "<br>");
             Response.Write("Date of Creation: " + staff.DateOfCreation + "<br>");
             Response.Write("Staff Age: " + staff.Age + "<br>");
             Response.Write("Is Admin: " + staff.Admin);
