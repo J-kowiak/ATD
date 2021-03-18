@@ -6,7 +6,8 @@ namespace ClassLibrary
     public class clsStockCollection
     {
         List<clsStock> mStockList = new List<clsStock>();
-      
+        clsStock mThisStock = new clsStock();
+
 
         public List<clsStock> StockList
         {
@@ -33,7 +34,16 @@ namespace ClassLibrary
 
         }
 
-        public clsStock ThisStock { get; set; }
+        public clsStock ThisStock {
+            get
+            {
+                return mThisStock;
+            }
+            set
+            {
+                mThisStock = value;
+            }
+        }
 
         public clsStockCollection()
         {
@@ -59,6 +69,33 @@ namespace ClassLibrary
                 mStockList.Add(AnStock);
                 Index++;
             }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@Name", mThisStock.Name);
+            DB.AddParameter("@Category", mThisStock.Category);
+            DB.AddParameter("@Quantity", mThisStock.Quantity);
+            DB.AddParameter("@NextDelivery", mThisStock.NextDelivery);
+            DB.AddParameter("@Sale_Ready", mThisStock.Sale_Ready);
+            //exec query returning primary value
+            return DB.Execute("sproc_tblStock_Insert");
+
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductId", mThisStock.ProductId);
+            DB.AddParameter("@Name", mThisStock.Name);
+            DB.AddParameter("@Category", mThisStock.Category);
+            DB.AddParameter("@Quantity", mThisStock.Quantity);
+            DB.AddParameter("@NextDelivery", mThisStock.NextDelivery);
+            DB.AddParameter("@Sale_Ready", mThisStock.Sale_Ready);
+            //exec query returning primary value
+             DB.Execute("sproc_tblStock_Update");
         }
     }
 }

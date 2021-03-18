@@ -57,5 +57,58 @@ namespace Testing3
             Assert.AreEqual(allStock.Count, 2); 
 
         }
+
+        [TestMethod]
+        public void AddMethodOk()
+        {
+            Int32 PrimaryKey = 0;
+
+            ItemTest.Name = "Pink Hat";
+            ItemTest.Category = "HeadWear";
+            ItemTest.Quantity = 70;
+            ItemTest.Sale_Ready = true;
+            ItemTest.NextDelivery = DateTime.Now.Date;
+
+            // sets to test data
+            allStock.ThisStock = ItemTest;
+            //add record
+            PrimaryKey = allStock.Add();
+            //set primary key to test data
+            ItemTest.ProductId = PrimaryKey;
+            //find record
+            allStock.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(allStock.ThisStock, ItemTest);
+
+        }
+        [TestMethod]
+        public void UpdateMethodOk()
+        {
+            Int32 PrimaryKey = 0;
+            //set its propeties
+            ItemTest.Name = "Pink Hat";
+            ItemTest.Category = "HeadWear";
+            ItemTest.Quantity = 70;
+            ItemTest.Sale_Ready = true;
+            ItemTest.NextDelivery = DateTime.Now.Date;
+
+            // sets to test data
+            allStock.ThisStock = ItemTest;
+            PrimaryKey = allStock.Add();
+            ItemTest.ProductId = PrimaryKey;
+
+            //modifiying data
+
+            ItemTest.Name = "Blue Gloves";
+            ItemTest.Category = "HandWear";
+            ItemTest.Quantity = 25;
+            ItemTest.Sale_Ready = false;
+            ItemTest.NextDelivery = DateTime.Now.Date;
+            ItemTest.ProductId = PrimaryKey;
+
+            allStock.ThisStock = ItemTest;
+            allStock.Update();
+            allStock.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(allStock.ThisStock, ItemTest);
+        }
     }
 }
