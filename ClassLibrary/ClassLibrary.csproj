@@ -74,6 +74,7 @@
     <Compile Include="clsStaff.cs" />
     <Compile Include="clsStaffCollection.cs" />
     <Compile Include="clsStock.cs" />
+    <Compile Include="clsStockCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="clsStaffLogin.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
