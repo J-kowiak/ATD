@@ -39,11 +39,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
             stock.Quantity = Quantity;
             stock.ProductId = Convert.ToInt32(txtProductId.Text);
             stock.NextDelivery = Convert.ToDateTime(NextDelivery);
-            stock.Sale_Ready = Convert.ToBoolean(txtNextDelivery.Text);
+            stock.Sale_Ready = cbSaleReady.Checked;
             // Stores attributes in session objecy
-            Session["stock"] = stock;
-            // Navigates to viewer page
-            Response.Redirect("StockViewer.aspx");
+            clsStockCollection StockList = new clsStockCollection();
+            StockList.ThisStock = stock;
+            StockList.Add();
+            // Navigates to list page
+            Response.Redirect("StockList.aspx");
         }
         else
             lblError.Text = error;
@@ -72,6 +74,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             
 
         }
+
+    }
+
+    protected void txtProductId_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void cbSaleReady_CheckedChanged(object sender, EventArgs e)
+    {
 
     }
 }

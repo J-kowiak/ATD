@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -152,6 +153,11 @@ namespace ClassLibrary
                 error += "The category cannot be larger than 50 characters : ";
             }
             return error;
+        }
+
+        public static implicit operator List<object>(clsStock v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
