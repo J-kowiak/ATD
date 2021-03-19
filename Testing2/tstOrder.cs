@@ -19,6 +19,7 @@ namespace Testing2
         [TestMethod]
         public void OrderIdOK()
         {
+            // creates instance of the class we want to create
             clsOrder anOrder = new clsOrder();
 
             Int32 TestData = 1;
