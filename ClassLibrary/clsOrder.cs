@@ -101,5 +101,111 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string orderId, string ItemName, string Price, string DateOrderMade, string ItemShipped)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the data values
+            DateTime DateTemp;
+            //creates a temporary variable to stor int
+            int TempInt;
+            //creates a temporary variable to store double floating point
+            double TempDouble;
+            //creates a temporary variable to store a boolean
+            Boolean TempBool;
+            
+
+            //if the ItemName is blank
+            if (ItemName.Length == 0)
+            {
+                //Record the Error
+                Error = Error + "The Item name may not be blank";
+            }
+
+            if (ItemName.Length > 50)
+            {
+                //record the Error
+                Error = Error + "The Item Name cannot be more than 50 characters.";
+            }
+
+            try
+            {
+                TempDouble = Convert.ToDouble(Price);
+                if (TempDouble < 0.01)
+                {
+                    //record the Error
+                    Error = Error + "The Price cannot be less than 0.01";
+                }
+                if (TempDouble > 10000)
+                {
+                    //record the Error
+                    Error = Error + "The Price cannot be more than 10000";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "That is not a double";
+            }
+
+            try
+            {
+                TempBool = Convert.ToBoolean(ItemShipped);
+                if (TempBool =! true || false)
+                {
+                    Error = Error + "That is not a Boolean";
+                }
+            }
+            catch
+            {
+                Error = Error + "That is not a Boolean";
+            }
+
+
+            try
+            {
+                //copy the DateOrderMade value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(DateOrderMade);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            try
+            {
+                TempInt = Convert.ToInt32(orderId);
+                if (TempInt < 1)
+                {
+                    //record the Error
+                    Error = Error + "The orderId cannot be blank";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "That is not an integer";
+            }
+
+            return Error;
+
+
+
+        }
+            //return any error messages    
+            //return Error;
+        
     }
 }
