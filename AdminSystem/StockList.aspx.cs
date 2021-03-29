@@ -29,10 +29,7 @@ public partial class _1_List : System.Web.UI.Page
         lstStock.DataBind();
     }
 
-    protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-    {
 
-    }
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
@@ -58,4 +55,6 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a to delete from list";
         }
     }
+
+
 }
