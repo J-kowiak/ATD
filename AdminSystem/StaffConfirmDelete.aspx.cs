@@ -14,6 +14,22 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
     // Event handler for the load event.
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Checks to see if 'isLoggedIn' has been set.
+        if (Session["isLoggedIn"] == null)
+        {
+            // Redirect the user back to StaffLogin page.
+            Response.Redirect("StaffLogin.aspx");
+        }
+        else
+        {
+            // If the user is not logged in.
+            if (!(bool)Session["isLoggedIn"])
+            {
+                // Redirect to StaffLogin.
+                Response.Redirect("StaffLogin.aspx");
+            }
+        }
+
         // Get the number of the address to be deleted from the session object.
         this.staffID = Convert.ToInt32(Session["staffID"]);
     }
