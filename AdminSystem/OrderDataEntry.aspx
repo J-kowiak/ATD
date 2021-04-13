@@ -26,7 +26,7 @@
 &nbsp;<asp:TextBox ID="txtDateOrderMade" runat="server" height="16px"></asp:TextBox>
         <br />
         <br />
-        <asp:CheckBox ID="ItemShipped" runat="server" OnCheckedChanged="ItemShipped_CheckedChanged" Text="Item Shipped?" />
+        <asp:CheckBox ID="chkItemShipped" runat="server" OnCheckedChanged="ItemShipped_CheckedChanged" Text="Item Shipped?" />
         <br />
         <br />
         <asp:Label ID="lblError" runat="server"></asp:Label>
