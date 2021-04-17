@@ -8,9 +8,39 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 OrderIDint;
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        //get the number of the order to be processed
+        OrderIDint = Convert.ToInt32(Session["OrderId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (OrderIDint != -1)
+            {
+                //display the current data for the record
+                DisplayOrder();
+            }
+        }
        
+    }
+
+    void DisplayOrder()
+    {
+        //create an instance of the order list
+        clsOrderCollection OrderList = new clsOrderCollection();
+        //find the record to update
+        OrderList.ThisOrder.Find(OrderIDint);
+        
+        //display the data for this record
+        txtOrderID.Text = OrderList.ThisOrder.OrderId.ToString();
+        txtItemName.Text = OrderList.ThisOrder.ItemName.ToString();
+        txtPrice.Text = OrderList.ThisOrder.Price.ToString();
+        txtDateOrderMade.Text = OrderList.ThisOrder.DateOrderMade.ToString();
+        chkItemShipped.Checked = OrderList.ThisOrder.ItemShipped;
+
     }
 
     protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -35,8 +65,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Price = txtPrice.Text;
         //capture the Date the order was made
         string DateOrderMade = txtDateOrderMade.Text;
-        //captures wether the Item has shipped
-        string ItemShipped = AnOrder.ItemShipped.ToString();
+        //captures whether the Item has shipped
+        string ItemShipped = chkItemShipped.Checked.ToString();
         //variable to store any error messages
         string Error = "";
         //validate the data
@@ -56,11 +86,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             //create a new instance of the order collection
             clsOrderCollection OrderList = new clsOrderCollection();
-            //set the ThisOrder property
-            OrderList.ThisOrder = AnOrder;
-            //add the new record 
-            OrderList.Add();
-            //navigate to viewer page
+            //if this is a new record i.e. OrderId = -1 then add the data
+            if (OrderIDint == -1)
+            {
+                //set the ThisOrder property
+                OrderList.ThisOrder = AnOrder;
+                //add the new record
+                OrderList.Add();
+
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                OrderList.ThisOrder.Find(OrderIDint);
+                //set ThisOrder property
+                OrderList.ThisOrder = AnOrder;
+                //update the record
+                OrderList.Update();
+            }
+            //redirect back to the listpage
             Response.Redirect("OrderList.aspx");
         }
         else
