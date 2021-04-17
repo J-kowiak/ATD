@@ -169,5 +169,41 @@ namespace Testing2
             //test to see ThisAddress matches the test data
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create item of test data
+            clsOrder TestItem = new clsOrder();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.OrderId = 1234;
+            TestItem.ItemName = "Test Item3";
+            TestItem.Price = 33.22;
+            TestItem.DateOrderMade = DateTime.Now.Date;
+            TestItem.ItemShipped = true;
+
+            //set ThisOrder to the test data
+            AllOrders.ThisOrder = TestItem;
+
+            //add the record
+            PrimaryKey = AllOrders.Add();
+
+            //set the primary key of the test data
+            TestItem.OrderId = PrimaryKey;
+
+            //find the record
+            AllOrders.ThisOrder.Find(PrimaryKey);
+
+            //delete the record
+            AllOrders.Delete();
+
+            //now find the record
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
     }
 }
