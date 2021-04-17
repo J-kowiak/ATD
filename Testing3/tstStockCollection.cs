@@ -51,12 +51,7 @@ namespace Testing3
 
         }
 
-        [TestMethod]
-        public void TwoRecordsPresent()
-        {
-            Assert.AreEqual(allStock.Count, 2); 
 
-        }
 
         [TestMethod]
         public void AddMethodOk()
@@ -109,6 +104,68 @@ namespace Testing3
             allStock.Update();
             allStock.ThisStock.Find(PrimaryKey);
             Assert.AreEqual(allStock.ThisStock, ItemTest);
+        }
+        [TestMethod]
+        public void DeleteMethodOk()
+        {
+            Int32 primaryKey = 0;
+            ItemTest.Sale_Ready = true;
+            ItemTest.ProductId = 0;
+            ItemTest.Quantity = 100;
+            ItemTest.Name = "Black mask";
+            ItemTest.Category = "FaceWear";
+            ItemTest.NextDelivery = DateTime.Now;
+
+            allStock.ThisStock = ItemTest;
+            primaryKey = allStock.Add();
+            ItemTest.ProductId = primaryKey;
+            allStock.ThisStock.Find(primaryKey);
+            allStock.Delete();
+            Boolean Found = allStock.ThisStock.Find(primaryKey);
+            Assert.IsFalse(Found);
+            
+        }
+        [TestMethod]
+        public void FilterByCategoryOk()
+        {
+            //creates an instance of filtered data
+            clsStockCollection filteredStock = new clsStockCollection();
+            filteredStock.FilterByCategory("");
+            Assert.AreEqual(allStock.Count, filteredStock.Count);
+        }
+        [TestMethod]
+        public void FilterByCategoryNoneFoundOk()
+        {
+            //creates an instance of filtered data
+            clsStockCollection filteredStock = new clsStockCollection();
+            filteredStock.FilterByCategory("XXX XX");
+            Assert.AreEqual(0,filteredStock.Count);
+        }
+
+        [TestMethod]
+        public void FilterByCategoryFoundOk()
+        {
+            //creates an instance of filtered data
+            clsStockCollection filteredStock = new clsStockCollection();
+            Boolean OK = true;
+            filteredStock.FilterByCategory("xx");
+            //checks if correct number of records found
+            if(filteredStock.Count == 2)
+            {
+                if(filteredStock.StockList[0].ProductId != 27)
+                {
+                    OK = false;
+                }
+                if (filteredStock.StockList[1].ProductId != 28)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
     }
 }

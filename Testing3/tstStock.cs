@@ -342,7 +342,7 @@ namespace Testing3
             NextDelivery = Test.ToString();
             // invoke method
             Error = stock.Valid(Name, Category, Quantity, NextDelivery);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
 
         }
 
