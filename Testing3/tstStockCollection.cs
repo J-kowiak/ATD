@@ -51,12 +51,7 @@ namespace Testing3
 
         }
 
-        [TestMethod]
-        public void TwoRecordsPresent()
-        {
-            Assert.AreEqual(allStock.Count, 2);
 
-        }
 
         [TestMethod]
         public void AddMethodOk()
@@ -119,6 +114,7 @@ namespace Testing3
             ItemTest.Quantity = 100;
             ItemTest.Name = "Black mask";
             ItemTest.Category = "FaceWear";
+            ItemTest.NextDelivery = DateTime.Now;
 
             allStock.ThisStock = ItemTest;
             primaryKey = allStock.Add();
@@ -152,15 +148,15 @@ namespace Testing3
             //creates an instance of filtered data
             clsStockCollection filteredStock = new clsStockCollection();
             Boolean OK = true;
-            filteredStock.FilterByCategory("XXX XX");
+            filteredStock.FilterByCategory("xx");
             //checks if correct number of records found
             if(filteredStock.Count == 2)
             {
-                if(filteredStock.StockList[0].ProductId != 36)
+                if(filteredStock.StockList[0].ProductId != 27)
                 {
                     OK = false;
                 }
-                if (filteredStock.StockList[1].ProductId != 37)
+                if (filteredStock.StockList[1].ProductId != 28)
                 {
                     OK = false;
                 }

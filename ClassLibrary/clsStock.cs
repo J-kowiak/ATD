@@ -124,7 +124,10 @@ namespace ClassLibrary
                     error += "Date cannot be in the past : ";
 
                 }
-
+                if (temp > DateTime.Now.Date.AddYears(1))
+                {
+                    error += "Cannot book a delivery too far from now : ";
+                }
             }
             catch
             {
