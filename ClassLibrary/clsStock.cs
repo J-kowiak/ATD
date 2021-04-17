@@ -124,10 +124,7 @@ namespace ClassLibrary
                     error += "Date cannot be in the past : ";
 
                 }
-                if (temp > DateTime.Now.Date)
-                {
-                    error += "The date cannot be in the future : ";
-                }
+
             }
             catch
             {
@@ -143,7 +140,10 @@ namespace ClassLibrary
             {
                 error += "The name cannot be larger than 50 characters : ";
             }
-
+            if (quantity < 0)
+            {
+                error += "The qunatity cannot be a negative number : ";
+            }
             if (category.Length == 0)
             {
                 error += "The category cannot be blank : ";

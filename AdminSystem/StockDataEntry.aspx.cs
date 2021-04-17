@@ -8,14 +8,36 @@ using System.Web.UI.WebControls;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 productId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        productId = Convert.ToInt32(Session["ProductId"]);
+        if(IsPostBack == false)
+        {
+            //if this is not a new record
+            if(productId != -1)
+            {
+                DisplayStock();
+            }
+        }
+    }
 
+     void DisplayStock()
+    {
+        clsStockCollection allStock = new clsStockCollection();
+        //find record to update
+        allStock.ThisStock.Find(productId);
+        //Display data for the record
+        txtCategory.Text = allStock.ThisStock.Category.ToString();
+        txtName.Text = allStock.ThisStock.Name.ToString();
+        txtQuantity.Text = allStock.ThisStock.Quantity.ToString();
+        txtNextDelivery.Text = allStock.ThisStock.Quantity.ToString();
+        cbSaleReady.Checked = allStock.ThisStock.Sale_Ready;
     }
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("StockList.aspx");
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -23,7 +45,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         String Category = txtCategory.Text;
         String Name = txtName.Text;
         String NextDelivery = txtNextDelivery.Text;
-        int Quantity = Convert.ToInt32(txtQuantity);
+        int Quantity = Convert.ToInt32(txtQuantity.Text);
         String error = "";
         //Creates a new instance of stock
         clsStock stock = new clsStock();
@@ -37,13 +59,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
             stock.Category = Category;
             stock.Name = Name;
             stock.Quantity = Quantity;
-            stock.ProductId = Convert.ToInt32(txtProductId.Text);
+            stock.ProductId = productId;
             stock.NextDelivery = Convert.ToDateTime(NextDelivery);
             stock.Sale_Ready = cbSaleReady.Checked;
             // Stores attributes in session objecy
             clsStockCollection StockList = new clsStockCollection();
-            StockList.ThisStock = stock;
-            StockList.Add();
+            if (productId == -1)
+            {
+                StockList.ThisStock = stock;
+                StockList.Add();
+            }
+            else
+            {
+                //find productId
+                StockList.ThisStock.Find(productId);
+                // set this stock property
+                StockList.ThisStock = stock;
+                StockList.Update();
+            }
             // Navigates to list page
             Response.Redirect("StockList.aspx");
         }
@@ -62,7 +95,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Int32 productId;
         Boolean Found = false;
         // get primary key from user
-        productId = Convert.ToInt32(txtProductId.Text);
+        try
+        {
+            productId = Convert.ToInt32(txtProductId.Text);
+        }
+        catch
+        {
+            productId = -1;
+        }
         // find record
         Found = stock.Find(productId);
         if (Found == true)
@@ -73,6 +113,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtQuantity.Text = stock.Quantity.ToString();
             
 
+        } else
+        {
+            lblError.Text = "Item cannot be found";
         }
 
     }
@@ -83,6 +126,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
     protected void cbSaleReady_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void txtName_TextChanged(object sender, EventArgs e)
     {
 
     }
