@@ -205,5 +205,47 @@ namespace Testing2
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+        public void ReportByItemNameMethodOK()
+        {
+            //create an instance of the filtered data 
+            Boolean OK = true;
+            //create anm instance of the filtered data
+            clsOrderCollection FilteredItems = new clsOrderCollection();
+            //apply a blank string (should return all records)
+            FilteredItems.ReportByItemName("yyy yyy");
+            //check that the correct number of records are found
+            if(FilteredItems.Count == 2)
+            {
+                //check the first record is ID 322341
+                if (FilteredItems.OrderList[0].OrderId != 322341)
+                {
+                    OK = false;
+                }
+                //check the first record is ID 322342
+                if (FilteredItems.OrderList[1].OrderId != 322342)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void ReportByItemNameNoneFound()
+        {
+            
+            //create an instance of the filtered data
+            clsOrderCollection FilteredItems = new clsOrderCollection();
+            //apply a blank string (should return all records)
+            FilteredItems.ReportByItemName("xxx xxx");
+            //test to see that the two values are the same
+            Assert.AreEqual(0, FilteredItems.Count);
+        }
     }
 }

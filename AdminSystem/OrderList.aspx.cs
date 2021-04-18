@@ -83,4 +83,44 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list";
         }
     }
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        //create an instance of the ItemCollection
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportByItemName(txtItemNameFilter.Text);
+        lstOrderList.DataSource = Orders.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "OrderId";
+        //set the name of the field to display
+        lstOrderList.DataTextField = "ItemName";
+        //bind the data to the list
+        lstOrderList.DataBind();
+    }
+
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        //create an instance of the ItemCollection
+        clsOrderCollection Orders = new clsOrderCollection();
+        Orders.ReportByItemName("");
+        //clear any existing filter to tidy up the interface
+        txtItemNameFilter.Text = "";
+        lstOrderList.DataSource = Orders.OrderList;
+        //set the name of the primary key
+        lstOrderList.DataValueField = "OrderId";
+        //set the name of the field to display
+        lstOrderList.DataTextField = "ItemName";
+        //bind the data to the list
+        lstOrderList.DataBind();
+    }
+
+    protected void TextBox1_TextChanged(object sender, EventArgs e)
+    {
+
+    }
 }
+
+    
+    
+
+    
