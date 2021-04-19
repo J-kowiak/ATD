@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <p>
             <asp:Label ID="lblCustomerNo" runat="server" Text="Customer Number"></asp:Label>
-            <asp:TextBox ID="txtCustomerNo" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtCustomerNo" runat="server" Enabled="False"></asp:TextBox>
             <br />
             <br />
             <asp:Label ID="lblName" runat="server" Text="Name" width="113px"></asp:Label>
@@ -32,16 +32,16 @@
         <asp:TextBox ID="txtAddress" runat="server"></asp:TextBox>
         <br />
         <br />
-        <asp:CheckBox ID="chkArchived" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Text="Archived" />
+        <asp:CheckBox ID="chkArchived" runat="server" Text="Archived" />
         <br />
         <br />
         <asp:Label ID="lblError" runat="server"></asp:Label>
         <br />
         <br />
         <br />
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" style="height: 26px" />
 &nbsp;
-        <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
     </form>
 </body>
 </html>

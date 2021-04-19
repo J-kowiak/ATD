@@ -10,6 +10,11 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" Text="Back" />
+        </p>
     </form>
 </body>
 </html>
