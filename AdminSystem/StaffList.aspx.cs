@@ -128,30 +128,6 @@ public partial class _1_List : System.Web.UI.Page
         }
     }
 
-    // Event handler for the View button.
-    protected void btnView_Click(object sender, EventArgs e)
-    {
-        // If a record has been selected from the list.
-        if (lstStaffList.SelectedIndex != -1)
-        {
-            // Get the primary key valaue of the record to view,
-            // also create a variable to store the primary key value of the record to be viewed.
-            Int32 selectedStaffID = Convert.ToInt32(lstStaffList.SelectedValue);
-
-            // Store the data in the session object.
-            Session["selectedStaffID"] = selectedStaffID;
-
-            // Redirect to the view page.
-            Response.Redirect("StaffViewer.aspx");
-        }
-        // If no record has been selected.
-        else
-        {
-            // Display an error.
-            lblError.Text = "Please select a record to view from the list";
-        }
-    }
-
     // Event handler for the Apply button.
     protected void btnApply_Click(object sender, EventArgs e)
     {
