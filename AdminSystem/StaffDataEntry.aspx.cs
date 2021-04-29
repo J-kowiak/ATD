@@ -10,7 +10,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
 {
     // Fields.
     private Int32 staffID;
-    private bool isEdit;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -70,8 +69,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtDateOfCreation.Text = staffList.ThisStaffMember.DateOfCreation.ToString();
         txtStaffAge.Text = staffList.ThisStaffMember.Age.ToString();
         chkAdmin.Checked = staffList.ThisStaffMember.Admin;
-
-        this.isEdit = true;
     }
 
     // Event handler for the OK buttton.
