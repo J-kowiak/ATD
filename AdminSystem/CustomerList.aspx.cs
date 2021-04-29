@@ -36,7 +36,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         //store -1 into the session object to indicate this is a new record
-        Session["AddressNo"] = -1;
+        Session["CustomerNo"] = -1;
         //redirect to the data entry page
         Response.Redirect("CustomerDataEntry.aspx");
     }
