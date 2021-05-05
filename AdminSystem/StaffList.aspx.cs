@@ -47,12 +47,16 @@ public partial class _1_List : System.Web.UI.Page
         // Create an instance of clsStaffCollection.
         var allStaff = new clsStaffCollection();
 
+        // Set the data source to the list of staff in the collection.
         lstStaffList.DataSource = allStaff.StaffList;
 
+        // Set the name of the primary key.
         lstStaffList.DataValueField = "ID";
 
+        // Set the data field to display.
         lstStaffList.DataTextField = "Name";
 
+        // Bind the data to the list.
         lstStaffList.DataBind();
     }
 

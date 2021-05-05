@@ -42,10 +42,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 DisplayStaff();
             }
             else
-            {
-                // Auto-assign not editable values.
+            { 
                 txtStaffID.Text = 0.ToString();
-                txtStaffID.ReadOnly = true;
+
+                // Auto-assign not editable values.
                 txtDateOfCreation.Text = DateTime.Now.ToString();
             }
         }
@@ -77,21 +77,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // Create an instance of clsStaff.
         var staff = new clsStaff();
 
-        int staffID;
-        int staffAge;
-        
-        // Ensure that data entered matches required data type.
-        try
-        {
-            staffID = Convert.ToInt32(txtStaffID.Text);
-            staffAge = Convert.ToInt32(txtStaffAge.Text);
-        }
-        catch (System.FormatException)
-        {
-            staffID = -1;
-            staffAge = -1;
-        }
-
+        string staffID = txtStaffID.Text;
+        string staffAge = txtStaffAge.Text;
         string staffUsername = txtStaffUsername.Text;
         string staffPassword = txtStaffPassword.Text;
         string staffName = txtStaffName.Text;
@@ -111,7 +98,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             staff.Name = staffName;
             staff.Address = staffAddress;
             staff.DateOfCreation = Convert.ToDateTime(txtDateOfCreation.Text);
-            staff.Age = staffAge;
+            staff.Age = Convert.ToInt32(staffAge);
             staff.Admin = staffAdmin;
 
             // Create a new instance of clsStaffCollection.

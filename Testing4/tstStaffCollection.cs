@@ -25,7 +25,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void StaffListOK()
+        public void StaffListPropertyOK()
         {
             // Create an instance of the clsStaffCollection class.
             this.allStaff = new clsStaffCollection();
@@ -57,7 +57,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void ThisStaffMemberOK()
+        public void ThisStaffMemberPropertyOK()
         {
             // Create an instance of the clsStaffCollection class.
             this.allStaff = new clsStaffCollection();
