@@ -31,7 +31,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void AdminOK()
+        public void AdminPropertyOK()
         {
             // Create an instance of clsStaff.
             this.staff = new clsStaff();
@@ -44,7 +44,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void DateOfCreationOK()
+        public void DateOfCreationPropertyOK()
         {
             // Create an instance of clsStaff.
             this.staff = new clsStaff();
@@ -57,7 +57,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void AddressOK()
+        public void AddressPropertyOK()
         {
             // Create an instance of clsStaff.
             this.staff = new clsStaff();
@@ -70,7 +70,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void IDOK()
+        public void IDPropertyOK()
         {
             // Create an instance of clsStaff.
             this.staff = new clsStaff();
@@ -83,7 +83,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void NameOK()
+        public void NamePropertyOK()
         {
             // Create an instance of clsStaff.
             this.staff = new clsStaff();
@@ -96,7 +96,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void PasswordOK()
+        public void PasswordPropertyOK()
         {
             // Create an instance of clsStaff.
             this.staff = new clsStaff();
@@ -109,7 +109,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void UsernameOK()
+        public void UsernamePropertyOK()
         {
             // Create an instance of clsStaff.
             this.staff = new clsStaff();
@@ -122,7 +122,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void AgeOK()
+        public void AgePropertyOK()
         {
             // Create an instance of clsStaff.
             this.staff = new clsStaff();
@@ -326,7 +326,7 @@ namespace Testing4
             this.staff = new clsStaff();
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -341,7 +341,7 @@ namespace Testing4
             string staffAddress = "";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -356,7 +356,7 @@ namespace Testing4
             string staffAddress = "n";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -370,7 +370,7 @@ namespace Testing4
             string staffAddress = "ng";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -385,7 +385,7 @@ namespace Testing4
             string staffAddress = "".PadRight(49, 'n');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -400,7 +400,7 @@ namespace Testing4
             string staffAddress = "".PadRight(50, 'n');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -415,7 +415,7 @@ namespace Testing4
             string staffAddress = "".PadRight(51, 'n');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -430,7 +430,7 @@ namespace Testing4
             string staffAddress = "".PadRight(25, 'n');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -445,7 +445,7 @@ namespace Testing4
             string staffAddress = "".PadRight(500, 'n');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(staffAddress, this.staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -460,7 +460,7 @@ namespace Testing4
             string staffName = "";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -475,7 +475,7 @@ namespace Testing4
             string staffName = "J";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -490,7 +490,7 @@ namespace Testing4
             string staffName = "Jo";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -505,7 +505,7 @@ namespace Testing4
             string staffName = "".PadRight(49, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -520,7 +520,7 @@ namespace Testing4
             string staffName = "".PadRight(50, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -535,7 +535,7 @@ namespace Testing4
             string staffName = "".PadRight(51, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -550,7 +550,7 @@ namespace Testing4
             string staffName = "".PadRight(25, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -565,7 +565,7 @@ namespace Testing4
             string staffName = "".PadRight(500, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, staffName, this.staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -580,7 +580,7 @@ namespace Testing4
             string staffPassword = "";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -595,7 +595,7 @@ namespace Testing4
             string staffPassword = "J";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -610,7 +610,7 @@ namespace Testing4
             string staffPassword = "Jo";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -625,7 +625,7 @@ namespace Testing4
             string staffPassword = "".PadRight(63, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -640,7 +640,7 @@ namespace Testing4
             string staffPassword = "".PadRight(64, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -655,7 +655,7 @@ namespace Testing4
             string staffPassword = "".PadRight(65, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -670,7 +670,7 @@ namespace Testing4
             string staffPassword = "".PadRight(23, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -685,7 +685,7 @@ namespace Testing4
             string staffPassword = "".PadRight(500, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, staffPassword, this.staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -700,7 +700,7 @@ namespace Testing4
             string staffUsername = "";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -715,7 +715,7 @@ namespace Testing4
             string staffUsername = "J";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -730,7 +730,7 @@ namespace Testing4
             string staffUsername = "Jo";
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -745,7 +745,7 @@ namespace Testing4
             string staffUsername = "".PadRight(49, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -760,7 +760,7 @@ namespace Testing4
             string staffUsername = "".PadRight(50, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -775,7 +775,7 @@ namespace Testing4
             string staffUsername = "".PadRight(51, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -790,7 +790,7 @@ namespace Testing4
             string staffUsername = "".PadRight(25, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -805,7 +805,7 @@ namespace Testing4
             string staffUsername = "".PadRight(500, 'J');
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, staffUsername, this.staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -820,7 +820,7 @@ namespace Testing4
             int staffAge = -800;
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -835,7 +835,7 @@ namespace Testing4
             int staffAge = 15;
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -850,7 +850,7 @@ namespace Testing4
             int staffAge = 16;
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -865,7 +865,7 @@ namespace Testing4
             int staffAge = 17;
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -880,7 +880,7 @@ namespace Testing4
             int staffAge = 79;
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -895,7 +895,7 @@ namespace Testing4
             int staffAge = 80;
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -910,7 +910,7 @@ namespace Testing4
             int staffAge = 81;
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreNotEqual(error, "");
@@ -925,7 +925,7 @@ namespace Testing4
             int staffAge = 40;
 
             // Variable which stores error messages if the test data is not valid.
-            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge);
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge.ToString());
 
             // Tests to see if the test data is valid.
             Assert.AreEqual(error, "");
@@ -938,6 +938,21 @@ namespace Testing4
             this.staff = new clsStaff();
 
             int staffAge = 800;
+
+            // Variable which stores error messages if the test data is not valid.
+            string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge.ToString());
+
+            // Tests to see if the test data is valid.
+            Assert.AreNotEqual(error, "");
+        }
+
+        [TestMethod]
+        public void StaffAgeInvalidData()
+        {
+            // Create an instance of clsStaff.
+            this.staff = new clsStaff();
+
+            string staffAge = "this is not an integer!";
 
             // Variable which stores error messages if the test data is not valid.
             string error = this.staff.Valid(this.staffAddress, this.staffName, this.staffPassword, this.staffUsername, staffAge);

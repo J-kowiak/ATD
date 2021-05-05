@@ -28,49 +28,6 @@ namespace ClassLibrary
         }
 
         // Methods.
-
-        // Getter and Setter for staff member collection.
-        public List<clsStaff> StaffList
-        {
-            get
-            {
-                return this.staffList;
-            }
-
-            set
-            {
-                this.staffList = value;
-            }
-        }
-
-        // Getter for staff member collection's size.
-        public int Count
-        {
-            get
-            {
-                return this.staffList.Count;
-            }
-
-            set
-            {
-                
-            }
-        }
-
-        // Getter and Setter for current instance of clsStaff.
-        public clsStaff ThisStaffMember
-        {
-            get
-            {
-                return this.thisStaffMember;
-            }
-
-            set
-            {
-                this.thisStaffMember = value;
-            }
-        }
-
         // Adds a new record to the database based on the values of thisStaffMember.
         public int Add()
         {
@@ -173,6 +130,48 @@ namespace ClassLibrary
 
                 // Point to the next record.
                 index++;
+            }
+        }
+
+        // Getter and Setter for staff member collection.
+        public List<clsStaff> StaffList
+        {
+            get
+            {
+                return this.staffList;
+            }
+
+            set
+            {
+                this.staffList = value;
+            }
+        }
+
+        // Getter for staff member collection's size.
+        public int Count
+        {
+            get
+            {
+                return this.staffList.Count;
+            }
+
+            set
+            {
+                
+            }
+        }
+
+        // Getter and Setter for current instance of clsStaff.
+        public clsStaff ThisStaffMember
+        {
+            get
+            {
+                return this.thisStaffMember;
+            }
+
+            set
+            {
+                this.thisStaffMember = value;
             }
         }
     }
