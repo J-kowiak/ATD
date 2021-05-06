@@ -145,7 +145,7 @@ namespace ClassLibrary
             }
             if (quantity < 0)
             {
-                error += "The qunatity cannot be a negative number : ";
+                error += "The qunatity must be 0 or above : ";
             }
             if (category.Length == 0)
             {

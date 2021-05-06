@@ -10,9 +10,7 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:Label ID="lblProductId" runat="server" Text="Product ID"></asp:Label>
-&nbsp;<asp:TextBox ID="txtProductId" runat="server" OnTextChanged="txtProductId_TextChanged"></asp:TextBox>
-        <p>
+&nbsp;<p>
             <asp:Label ID="lblName" runat="server" Text="Name" width="86px"></asp:Label>
 &nbsp;<asp:TextBox ID="txtName" runat="server" width="168px"></asp:TextBox>
         </p>
@@ -31,9 +29,15 @@
         </p>
         <asp:Label ID="lblError" runat="server"></asp:Label>
         <p style="margin-left: 40px">
-            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
+            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="Add" />
 &nbsp;
             <asp:Button ID="btnCancel" runat="server" OnClick="Button2_Click" Text="Cancel" />
+        </p>
+        <p style="margin-left: 40px">
+        <asp:Label ID="lblProductId" runat="server" Text="Product ID" style="text-align: left; float: left"></asp:Label>
+            <asp:TextBox ID="txtProductId" runat="server" OnTextChanged="txtProductId_TextChanged"></asp:TextBox>
+        </p>
+        <p style="margin-left: 40px">
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
         </p>
     </form>

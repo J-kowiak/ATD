@@ -152,11 +152,11 @@ namespace Testing3
             //checks if correct number of records found
             if(filteredStock.Count == 2)
             {
-                if(filteredStock.StockList[0].ProductId != 27)
+                if(filteredStock.StockList[0].ProductId != 3)
                 {
                     OK = false;
                 }
-                if (filteredStock.StockList[1].ProductId != 28)
+                if (filteredStock.StockList[1].ProductId != 6)
                 {
                     OK = false;
                 }
