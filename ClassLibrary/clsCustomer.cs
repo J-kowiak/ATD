@@ -49,6 +49,11 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid()
+        {
+            throw new NotImplementedException();
+        }
+
         public string Name
         {
             get
@@ -126,6 +131,63 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string email, string dateOfBirth, string address, string name, string password)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            if (name.Length == 0)
+            {
+                Error = Error + "Name may not be blank : ";
+            }
+            if (name.Length > 50)
+            {
+                Error = Error + "Name must be 50 characters or less: ";
+            }
+            if (email.Length == 0)
+            {
+                Error = Error + "Email may not be blank : ";
+            }
+            if (email.Length > 50)
+            {
+                Error = Error + "Email must be 50 characters or less: ";
+            }
+            if (password.Length == 0)
+            {
+                Error = Error + "Password may not be blank : ";
+            }
+            if (password.Length > 50)
+            {
+                Error = Error + "Password must be 50 characters or less: ";
+            }
+            if (address.Length == 0)
+            {
+                Error = Error + "Address may not be blank : ";
+            }
+            if (address.Length > 50)
+            {
+                Error = Error + "Address must be 50 characters or less: ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(dateOfBirth);
+                if (DateTemp > DateTime.Now.Date.AddYears(-13))
+                {
+                    Error = Error + "Date of Birth must be 13 years or older : ";
+                }
+                if (DateTemp < DateTime.Now.Date.AddYears(-200))
+                {
+                    Error = Error + "Date of Birth must 200 years or younger : ";
+                }
+
+
+            }
+            catch
+            {
+                Error = Error + "the date was not a valid date : ";
+            }
+            //return any error messages
+            return Error;
+        }
     }
 }
-
