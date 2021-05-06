@@ -33,7 +33,7 @@
         <br />
         <br />
         <asp:Button ID="btnOK" runat="server" Text="OK" OnClick="btnOK_Click" />
-        <asp:Button ID="Button1" runat="server" Text="Button" />
+        <asp:Button ID="Cancel" runat="server" Text="Cancel" OnClick="Cancel_Click" />
         <asp:Button ID="btnFind" runat="server" Text="Find" />
     </form>
 </body>

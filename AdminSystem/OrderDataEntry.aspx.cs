@@ -36,7 +36,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         
         //display the data for this record
         txtOrderID.Text = OrderList.ThisOrder.OrderId.ToString();
-        txtItemName.Text = OrderList.ThisOrder.ItemName.ToString();
+        txtItemName.Text = OrderList.ThisOrder.ItemName;
         txtPrice.Text = OrderList.ThisOrder.Price.ToString();
         txtDateOrderMade.Text = OrderList.ThisOrder.DateOrderMade.ToString();
         chkItemShipped.Checked = OrderList.ThisOrder.ItemShipped;
@@ -80,7 +80,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture the Price
             AnOrder.Price = Convert.ToDouble(txtPrice.Text);
             //capture the Date the order was made
-            AnOrder.DateOrderMade = Convert.ToDateTime(txtDateOrderMade);
+            AnOrder.DateOrderMade = Convert.ToDateTime(txtDateOrderMade.Text);
             //captures Item Shipped
             AnOrder.ItemShipped = chkItemShipped.Checked;
 
@@ -145,5 +145,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    
+
+
+    protected void Cancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("OrderList.aspx");
+    }
 }

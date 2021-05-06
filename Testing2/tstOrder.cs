@@ -537,46 +537,8 @@ namespace Testing2
             Assert.AreNotEqual(Error, "");
         }
 
-        [TestMethod]
-        public void DateOrderMadeExtremeMin()
-        {
-            //create an instance of tyhe class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //string variable to store any error message
-            String Error = "";
-            //create variable to store the test date data
-            DateTime TestDate;
-            //set the date to todays date
-            TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 100 years
-            TestDate = TestDate.AddYears(-100);
-            //convert the date variable to a string variable
-            string DateOrderMade = TestDate.ToString();
-            //invoke the method
-            Error = AnOrder.Valid(orderId, ItemName, Price, DateOrderMade, ItemShipped);
-            //test to see that the results are correct
-            Assert.AreNotEqual(Error, "");
-        }
-        [TestMethod]
-        public void DateOrderMadeMinLessOne()
-        {
-            //create an instance of tyhe class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //string variable to store any error message
-            String Error = "";
-            //create variable to store the test date data
-            DateTime TestDate;
-            //set the date to todays date
-            TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 100 years
-            TestDate = TestDate.AddDays(-1);
-            //convert the date variable to a string variable
-            string DateOrderMade = TestDate.ToString();
-            //invoke the method
-            Error = AnOrder.Valid(orderId, ItemName, Price, DateOrderMade, ItemShipped);
-            //test to see that the results are correct
-            Assert.AreNotEqual(Error, "");
-        }
+        
+        
         [TestMethod]
         public void DateOrderMadeMin()
         {
@@ -595,46 +557,8 @@ namespace Testing2
             //test to see that the results are correct
             Assert.AreEqual(Error, "");
         }
-        [TestMethod]
-        public void DateOrderMadeMinPlusOne()
-        {
-            //create an instance of tyhe class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //string variable to store any error message
-            String Error = "";
-            //create variable to store the test date data
-            DateTime TestDate;
-            //set the date to todays date
-            TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 100 years
-            TestDate = TestDate.AddDays(1);
-            //convert the date variable to a string variable
-            string DateOrderMade = TestDate.ToString();
-            //invoke the method
-            Error = AnOrder.Valid(orderId, ItemName, Price, DateOrderMade, ItemShipped);
-            //test to see that the results are correct
-            Assert.AreNotEqual(Error, "");
-        }
-        [TestMethod]
-        public void DateOrderMadeExtremeMax()
-        {
-            //create an instance of tyhe class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //string variable to store any error message
-            String Error = "";
-            //create variable to store the test date data
-            DateTime TestDate;
-            //set the date to todays date
-            TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 100 years
-            TestDate = TestDate.AddYears(100);
-            //convert the date variable to a string variable
-            string DateOrderMade = TestDate.ToString();
-            //invoke the method
-            Error = AnOrder.Valid(orderId, ItemName, Price, DateOrderMade, ItemShipped);
-            //test to see that the results are correct
-            Assert.AreNotEqual(Error, "");
-        }
+        
+        
         [TestMethod]
         public void DateOrderMadeInvalidData()
         {
