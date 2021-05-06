@@ -36,9 +36,4 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         //redirect back to the main page
         Response.Redirect("CustomerList.aspx");
     }
-
-    protected void Button2_Click(object sender, EventArgs e)
-    {
-
-    }
 }
