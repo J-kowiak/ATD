@@ -167,16 +167,7 @@ namespace ClassLibrary
             {
                 //copy the DateOrderMade value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(DateOrderMade);
-                if (DateTemp < DateTime.Now.Date)
-                {
-                    //record the error
-                    Error = Error + "The date cannot be in the past : ";
-                }
-                if (DateTemp > DateTime.Now.Date)
-                {
-                    //record the error
-                    Error = Error + "The date cannot be in the future : ";
-                }
+               
             }
             catch
             {
