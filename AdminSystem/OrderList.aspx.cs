@@ -74,10 +74,10 @@ public partial class _1_List : System.Web.UI.Page
             OrderId = Convert.ToInt32(lstOrderList.SelectedValue);
             //store the data in the session object
             Session["OrderId"] = OrderId;
-            //redirect to the delete page
-            Response.Redirect("OrderConfirmDelete.apsx");
+            //redirect to the delete page, 
+            Response.Redirect("OrderConfirmDelete.aspx");
         }
-        else //if no record has been selected
+        else //else if no record has been selected 
         {
             //display an error
             lblError.Text = "Please select a record from the list";
