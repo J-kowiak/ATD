@@ -45,7 +45,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         String Category = txtCategory.Text;
         String Name = txtName.Text;
         String NextDelivery = txtNextDelivery.Text;
-        int Quantity = Convert.ToInt32(txtQuantity.Text);
+        int Quantity = 0;
+        try
+        {
+             Quantity = Convert.ToInt32(txtQuantity.Text);
+
+        }
+        catch
+        {
+             Quantity = -1;
+
+        }
         String error = "";
         //Creates a new instance of stock
         clsStock stock = new clsStock();
