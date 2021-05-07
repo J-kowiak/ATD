@@ -77,7 +77,7 @@ namespace ClassLibrary
 
             if (staffAddress.Length > 50)
             {
-                error += "The staff address must be less than 50 characters : ";
+                error += "The staff address must be less than or equal to 50 characters : ";
             }
 
             if (staffName.Length == 0)
@@ -87,7 +87,7 @@ namespace ClassLibrary
 
             if (staffName.Length > 50)
             {
-                error += "The staff name must be less than 50 characters : ";
+                error += "The staff name must be less than or equal to 50 characters : ";
             }
 
             if (staffPassword.Length == 0)
@@ -97,7 +97,7 @@ namespace ClassLibrary
 
             if (staffPassword.Length > 64)
             {
-                error += "The staff password must be less than 64 characters : ";
+                error += "The staff password must be less than or equal to 64 characters : ";
             }
 
             if (staffUsername.Length == 0)
@@ -107,7 +107,7 @@ namespace ClassLibrary
 
             if (staffUsername.Length > 50)
             {
-                error += "The staff username must be less than 50 characters : ";
+                error += "The staff username must be less than or equal to 50 characters : ";
             }
 
             try
@@ -116,12 +116,12 @@ namespace ClassLibrary
 
                 if (age > 80)
                 {
-                    error += "The staff age must be younger than 80 : ";
+                    error += "The staff age must be younger than 81 : ";
                 }
 
                 if (age < 16)
                 {
-                    error += "The staff age must be older than 16 : ";
+                    error += "The staff age must be older than 15 : ";
                 }
             }
             catch (System.FormatException)
